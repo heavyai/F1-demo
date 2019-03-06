@@ -1,0 +1,4560 @@
+{
+  "pipelineConfig" : {
+    "schemaVersion" : 6,
+    "version" : 11,
+    "pipelineId" : "02LoadF1messagestoOmniSci269b8b03-6dd1-4744-980b-bf7008ff714b",
+    "title" : "02_Load F1 messages to OmniSci",
+    "description" : "",
+    "uuid" : "500ebfcb-7863-4784-80e2-e25f4000843a",
+    "configuration" : [ {
+      "name" : "executionMode",
+      "value" : "STANDALONE"
+    }, {
+      "name" : "edgeHttpUrl",
+      "value" : "http://localhost:18633"
+    }, {
+      "name" : "deliveryGuarantee",
+      "value" : "AT_LEAST_ONCE"
+    }, {
+      "name" : "testOriginStage",
+      "value" : "streamsets-datacollector-dev-lib::com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource::3"
+    }, {
+      "name" : "startEventStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "stopEventStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "shouldRetry",
+      "value" : true
+    }, {
+      "name" : "retryAttempts",
+      "value" : -1
+    }, {
+      "name" : "memoryLimit",
+      "value" : "${jvm:maxMemoryMB() * 0.85}"
+    }, {
+      "name" : "memoryLimitExceeded",
+      "value" : "LOG"
+    }, {
+      "name" : "notifyOnStates",
+      "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
+    }, {
+      "name" : "emailIDs",
+      "value" : [ "you@yourcompany.com" ]
+    }, {
+      "name" : "constants",
+      "value" : [ ]
+    }, {
+      "name" : "badRecordsHandling",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget::1"
+    }, {
+      "name" : "errorRecordPolicy",
+      "value" : "ORIGINAL_RECORD"
+    }, {
+      "name" : "statsAggregatorStage",
+      "value" : "streamsets-datacollector-basic-lib::com_streamsets_pipeline_stage_destination_devnull_StatsDpmDirectlyDTarget::1"
+    }, {
+      "name" : "workerCount",
+      "value" : 0
+    }, {
+      "name" : "clusterSlaveMemory",
+      "value" : 2048
+    }, {
+      "name" : "clusterSlaveJavaOpts",
+      "value" : "-XX:+UseConcMarkSweepGC -XX:+UseParNewGC -Dlog4j.debug"
+    }, {
+      "name" : "clusterLauncherEnv",
+      "value" : [ ]
+    }, {
+      "name" : "mesosDispatcherURL",
+      "value" : null
+    }, {
+      "name" : "logLevel",
+      "value" : "INFO"
+    }, {
+      "name" : "hdfsS3ConfDir",
+      "value" : null
+    }, {
+      "name" : "rateLimit",
+      "value" : 0
+    }, {
+      "name" : "maxRunners",
+      "value" : 0
+    }, {
+      "name" : "shouldCreateFailureSnapshot",
+      "value" : true
+    }, {
+      "name" : "runnerIdleTIme",
+      "value" : 60
+    }, {
+      "name" : "webhookConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "sparkConfigs",
+      "value" : [ ]
+    }, {
+      "name" : "amazonEMRConfig.userRegion",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.userRegionCustom",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.accessKey",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.secretKey",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.s3StagingUri",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.provisionNewCluster",
+      "value" : false
+    }, {
+      "name" : "amazonEMRConfig.clusterId",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.clusterPrefix",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.terminateCluster",
+      "value" : false
+    }, {
+      "name" : "amazonEMRConfig.loggingEnabled",
+      "value" : true
+    }, {
+      "name" : "amazonEMRConfig.s3LogUri",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.enableEMRDebugging",
+      "value" : true
+    }, {
+      "name" : "amazonEMRConfig.serviceRole",
+      "value" : "EMR_DefaultRole"
+    }, {
+      "name" : "amazonEMRConfig.jobFlowRole",
+      "value" : "EMR_EC2_DefaultRole"
+    }, {
+      "name" : "amazonEMRConfig.visibleToAllUsers",
+      "value" : true
+    }, {
+      "name" : "amazonEMRConfig.ec2SubnetId",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.masterSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.slaveSecurityGroup",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.instanceCount",
+      "value" : 2
+    }, {
+      "name" : "amazonEMRConfig.masterInstanceType",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.masterInstanceTypeCustom",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.slaveInstanceType",
+      "value" : null
+    }, {
+      "name" : "amazonEMRConfig.slaveInstanceTypeCustom",
+      "value" : null
+    } ],
+    "uiInfo" : {
+      "previewConfig" : {
+        "previewSource" : "CONFIGURED_SOURCE",
+        "batchSize" : "25",
+        "timeout" : 30000,
+        "writeToDestinations" : false,
+        "executeLifecycleEvents" : true,
+        "showHeader" : true,
+        "showFieldType" : true,
+        "rememberMe" : false
+      }
+    },
+    "fragments" : [ ],
+    "stages" : [ {
+      "instanceName" : "KafkaMultitopicConsumer_01",
+      "library" : "streamsets-datacollector-apache-kafka_1_1-lib",
+      "stageName" : "com_streamsets_pipeline_stage_origin_multikafka_MultiKafkaDSource",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "conf.dataFormatConfig.compression",
+        "value" : "NONE"
+      }, {
+        "name" : "conf.dataFormatConfig.filePatternInArchive",
+        "value" : "*"
+      }, {
+        "name" : "conf.dataFormatConfig.charset",
+        "value" : "UTF-8"
+      }, {
+        "name" : "conf.dataFormatConfig.removeCtrlChars",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.textMaxLineLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.useCustomDelimiter",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.customDelimiter",
+        "value" : "\\r\\n"
+      }, {
+        "name" : "conf.dataFormatConfig.includeCustomDelimiterInTheText",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.jsonContent",
+        "value" : "MULTIPLE_OBJECTS"
+      }, {
+        "name" : "conf.dataFormatConfig.jsonMaxObjectLen",
+        "value" : 40960
+      }, {
+        "name" : "conf.dataFormatConfig.csvFileFormat",
+        "value" : "CSV"
+      }, {
+        "name" : "conf.dataFormatConfig.csvHeader",
+        "value" : "NO_HEADER"
+      }, {
+        "name" : "conf.dataFormatConfig.csvAllowExtraColumns",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.csvExtraColumnPrefix",
+        "value" : "_extra_"
+      }, {
+        "name" : "conf.dataFormatConfig.csvMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomDelimiter",
+        "value" : "|"
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomEscape",
+        "value" : "\\"
+      }, {
+        "name" : "conf.dataFormatConfig.csvCustomQuote",
+        "value" : "\""
+      }, {
+        "name" : "conf.dataFormatConfig.csvEnableComments",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.csvCommentMarker",
+        "value" : "#"
+      }, {
+        "name" : "conf.dataFormatConfig.csvIgnoreEmptyLines",
+        "value" : true
+      }, {
+        "name" : "conf.dataFormatConfig.csvRecordType",
+        "value" : "LIST_MAP"
+      }, {
+        "name" : "conf.dataFormatConfig.csvSkipStartLines",
+        "value" : 0
+      }, {
+        "name" : "conf.dataFormatConfig.parseNull",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.nullConstant",
+        "value" : "\\\\N"
+      }, {
+        "name" : "conf.dataFormatConfig.xmlRecordElement",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.includeFieldXpathAttributes",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.xPathNamespaceContext",
+        "value" : [ ]
+      }, {
+        "name" : "conf.dataFormatConfig.outputFieldAttributes",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.xmlMaxObjectLen",
+        "value" : 4096
+      }, {
+        "name" : "conf.dataFormatConfig.logMode",
+        "value" : "COMMON_LOG_FORMAT"
+      }, {
+        "name" : "conf.dataFormatConfig.logMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.retainOriginalLine",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.customLogFormat",
+        "value" : "%h %l %u %t \"%r\" %>s %b"
+      }, {
+        "name" : "conf.dataFormatConfig.regex",
+        "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+      }, {
+        "name" : "conf.dataFormatConfig.fieldPathsToGroupName",
+        "value" : [ {
+          "fieldPath" : "/",
+          "group" : 1
+        } ]
+      }, {
+        "name" : "conf.dataFormatConfig.grokPatternDefinition",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.grokPattern",
+        "value" : "%{COMMONAPACHELOG}"
+      }, {
+        "name" : "conf.dataFormatConfig.onParseError",
+        "value" : "ERROR"
+      }, {
+        "name" : "conf.dataFormatConfig.maxStackTraceLines",
+        "value" : 50
+      }, {
+        "name" : "conf.dataFormatConfig.enableLog4jCustomLogFormat",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.log4jCustomLogFormat",
+        "value" : "%r [%t] %-5p %c %x - %m%n"
+      }, {
+        "name" : "conf.dataFormatConfig.avroSchemaSource",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.avroSchema",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.schemaRegistryUrls",
+        "value" : [ ]
+      }, {
+        "name" : "conf.dataFormatConfig.schemaLookupMode",
+        "value" : "SUBJECT"
+      }, {
+        "name" : "conf.dataFormatConfig.subject",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.schemaId",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.protoDescriptorFile",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.messageType",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.isDelimited",
+        "value" : true
+      }, {
+        "name" : "conf.dataFormatConfig.binaryMaxObjectLen",
+        "value" : 1024
+      }, {
+        "name" : "conf.dataFormatConfig.datagramMode",
+        "value" : "SYSLOG"
+      }, {
+        "name" : "conf.dataFormatConfig.typesDbPath",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.convertTime",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.excludeInterval",
+        "value" : true
+      }, {
+        "name" : "conf.dataFormatConfig.authFilePath",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormatConfig.netflowOutputValuesMode",
+        "value" : "RAW_AND_INTERPRETED"
+      }, {
+        "name" : "conf.dataFormatConfig.maxTemplateCacheSize",
+        "value" : -1
+      }, {
+        "name" : "conf.dataFormatConfig.templateCacheTimeoutMs",
+        "value" : -1
+      }, {
+        "name" : "conf.dataFormatConfig.netflowOutputValuesModeDatagram",
+        "value" : "RAW_AND_INTERPRETED"
+      }, {
+        "name" : "conf.dataFormatConfig.maxTemplateCacheSizeDatagram",
+        "value" : -1
+      }, {
+        "name" : "conf.dataFormatConfig.templateCacheTimeoutMsDatagram",
+        "value" : -1
+      }, {
+        "name" : "conf.dataFormatConfig.wholeFileMaxObjectLen",
+        "value" : 8192
+      }, {
+        "name" : "conf.dataFormatConfig.rateLimit",
+        "value" : "-1"
+      }, {
+        "name" : "conf.dataFormatConfig.verifyChecksum",
+        "value" : false
+      }, {
+        "name" : "conf.dataFormatConfig.excelHeader",
+        "value" : null
+      }, {
+        "name" : "conf.dataFormat",
+        "value" : "JSON"
+      }, {
+        "name" : "conf.brokerURI",
+        "value" : "localhost:9092"
+      }, {
+        "name" : "conf.consumerGroup",
+        "value" : "production20190305am2"
+      }, {
+        "name" : "conf.topicList",
+        "value" : [ "f1packetstreamjson" ]
+      }, {
+        "name" : "conf.produceSingleRecordPerMessage",
+        "value" : false
+      }, {
+        "name" : "conf.numberOfThreads",
+        "value" : 8
+      }, {
+        "name" : "conf.maxBatchSize",
+        "value" : 1000
+      }, {
+        "name" : "conf.batchWaitTime",
+        "value" : 2000
+      }, {
+        "name" : "conf.kafkaAutoOffsetReset",
+        "value" : "EARLIEST"
+      }, {
+        "name" : "conf.timestampToSearchOffsets",
+        "value" : 0
+      }, {
+        "name" : "conf.kafkaOptions",
+        "value" : [ ]
+      }, {
+        "name" : "conf.keyDeserializer",
+        "value" : "STRING"
+      }, {
+        "name" : "conf.valueDeserializer",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "yPos" : 50,
+        "stageType" : "SOURCE",
+        "rawSource" : {
+          "configuration" : [ {
+            "name" : "brokerHost",
+            "value" : "localhost"
+          }, {
+            "name" : "brokerPort",
+            "value" : 9092
+          }, {
+            "name" : "topic",
+            "value" : "myTopic"
+          }, {
+            "name" : "pollTimeout",
+            "value" : 1000
+          } ]
+        },
+        "description" : "",
+        "label" : "Read from f1packetstreamjson",
+        "xPos" : 60
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "KafkaMultitopicConsumer_01OutputLane15517956869520" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "StreamSelector_01",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_selector_SelectorDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "lanePredicates",
+        "value" : [ {
+          "outputLane" : "StreamSelector_01OutputLane1550709701169",
+          "predicate" : "${record:value(\"/json/header/packetId\")==0}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700413439",
+          "predicate" : "${record:value(\"/json/header/packetId\")==1}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700411834",
+          "predicate" : "${record:value(\"/json/header/packetId\")==2}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700409160",
+          "predicate" : "${record:value(\"/json/header/packetId\")==3}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700407562",
+          "predicate" : "${record:value(\"/json/header/packetId\")==4}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700405116",
+          "predicate" : "${record:value(\"/json/header/packetId\")==5}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700390014",
+          "predicate" : "${record:value(\"/json/header/packetId\")==6}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700233154",
+          "predicate" : "${record:value(\"/json/header/packetId\")==7}"
+        }, {
+          "outputLane" : "StreamSelector_01OutputLane1550700174925",
+          "predicate" : "default"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Split by packetId",
+        "xPos" : 280,
+        "yPos" : 320,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "KafkaMultitopicConsumer_01OutputLane15517956869520" ],
+      "outputLanes" : [ "StreamSelector_01OutputLane1550709701169", "StreamSelector_01OutputLane1550700413439", "StreamSelector_01OutputLane1550700411834", "StreamSelector_01OutputLane1550700409160", "StreamSelector_01OutputLane1550700407562", "StreamSelector_01OutputLane1550700405116", "StreamSelector_01OutputLane1550700390014", "StreamSelector_01OutputLane1550700233154", "StreamSelector_01OutputLane1550700174925" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "Trash_11",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_NullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "No packet match",
+        "xPos" : 500,
+        "yPos" : 1080,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700174925" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_01",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/carSetups"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "CONTINUE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot carSetups",
+        "xPos" : 500,
+        "yPos" : 690,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700405116" ],
+      "outputLanes" : [ "FieldPivoter_01OutputLane15507848914140" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_02",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/lapDataList"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "CONTINUE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot lapDataList",
+        "xPos" : 500,
+        "yPos" : 300,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700411834" ],
+      "outputLanes" : [ "FieldPivoter_02OutputLane15507861052710" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_03",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/marshalZones"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "CONTINUE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot marshalZones",
+        "xPos" : 500,
+        "yPos" : 170,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700413439" ],
+      "outputLanes" : [ "FieldPivoter_03OutputLane15507865174370" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_04",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/carStatuses"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot carStatuses",
+        "xPos" : 500,
+        "yPos" : 950,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700233154" ],
+      "outputLanes" : [ "FieldPivoter_04OutputLane15507981006070" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_05",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/carTelemetryData"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot carTelemetryData",
+        "xPos" : 500,
+        "yPos" : 820,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700390014" ],
+      "outputLanes" : [ "FieldPivoter_05OutputLane15507990988810" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_01",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 950,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_04OutputLane15507981006070" ],
+      "outputLanes" : [ "FieldFlattener_01OutputLane15508009782050" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_02",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 690,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_01OutputLane15507848914140" ],
+      "outputLanes" : [ "FieldFlattener_02OutputLane15508024873570" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_03",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ "" ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 820,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_05OutputLane15507990988810" ],
+      "outputLanes" : [ "FieldFlattener_03OutputLane15508027910540" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_04",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 500,
+        "yPos" : 430,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700409160" ],
+      "outputLanes" : [ "FieldFlattener_04OutputLane15508048948830" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_05",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 300,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_02OutputLane15507861052710" ],
+      "outputLanes" : [ "FieldFlattener_05OutputLane15508052163730" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_06",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 170,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_03OutputLane15507865174370" ],
+      "outputLanes" : [ "FieldFlattener_06OutputLane15508569852520" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldRemover_02",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldfilter_FieldFilterDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "filterOperation",
+        "value" : "REMOVE"
+      }, {
+        "name" : "fields",
+        "value" : [ "/json/carMotionDataList" ]
+      }, {
+        "name" : "constant",
+        "value" : null
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Drop carMotionDataList",
+        "xPos" : 500,
+        "yPos" : 40,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550709701169" ],
+      "outputLanes" : [ "FieldRemover_02OutputLane15508675659260" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldRemover_03",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldfilter_FieldFilterDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "filterOperation",
+        "value" : "KEEP"
+      }, {
+        "name" : "fields",
+        "value" : [ "/json/header", "/json/carMotionDataList", "/packet_time_ms" ]
+      }, {
+        "name" : "constant",
+        "value" : null
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "carMotionDataList",
+        "xPos" : 500,
+        "yPos" : -89.52534103393555,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550709701169" ],
+      "outputLanes" : [ "FieldRemover_03OutputLane15508678513090" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_06",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/carMotionDataList"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "CONTINUE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot carsMotionDataList",
+        "xPos" : 720,
+        "yPos" : -89.52532863616943,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldRemover_03OutputLane15508678513090" ],
+      "outputLanes" : [ "FieldPivoter_06OutputLane15508700236590" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_08",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 940,
+        "yPos" : -89.52532863616943,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_06OutputLane15508700236590" ],
+      "outputLanes" : [ "FieldFlattener_08OutputLane15508701076220" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_09",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 40,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldRemover_02OutputLane15508675659260" ],
+      "outputLanes" : [ "FieldFlattener_09OutputLane15508702107670" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_02",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 1160,
+        "yPos" : -89.52535152435303,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_08OutputLane15508701076220" ],
+      "outputLanes" : [ "FieldTypeConverter_02OutputLane15511291043730" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_01",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_carmotion_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "carindex",
+          "field" : "/json_carMotionDataList_carIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "gforcelateral",
+          "field" : "/json_carMotionDataList_gForceLateral"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "gforcelongitudinal",
+          "field" : "/json_carMotionDataList_gForceLongitudinal"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "gforcevertical",
+          "field" : "/json_carMotionDataList_gForceVertical"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packettime",
+          "dataType" : "DATETIME",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetversion",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "pitch",
+          "field" : "/json_carMotionDataList_pitch"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "playerscar",
+          "field" : "/json_carMotionDataList_playersCar"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "roll",
+          "field" : "/json_carMotionDataList_roll"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldforwarddirx",
+          "field" : "/json_carMotionDataList_worldForwardDirX"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldforwarddiry",
+          "field" : "/json_carMotionDataList_worldForwardDirY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldforwarddirz",
+          "field" : "/json_carMotionDataList_worldForwardDirZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldpositionx",
+          "field" : "/json_carMotionDataList_worldPositionX"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "worldpositiony",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carMotionDataList_worldPositionY"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "worldpositionz",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carMotionDataList_worldPositionZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldrightdirx",
+          "field" : "/json_carMotionDataList_worldRightDirX"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "worldrightdiry",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carMotionDataList_worldRightDirY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldrightdirz",
+          "field" : "/json_carMotionDataList_worldRightDirZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldvelocityx",
+          "field" : "/json_carMotionDataList_worldVelocityX"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldvelocityy",
+          "field" : "/json_carMotionDataList_worldVelocityY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "worldvelocityz",
+          "field" : "/json_carMotionDataList_worldVelocityZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "yaw",
+          "field" : "/json_carMotionDataList_yaw"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_carmotion_v2",
+        "xPos" : 1380,
+        "yPos" : -89.52532958984375,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_02OutputLane15511291043730" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_03",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 40,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_09OutputLane15508702107670" ],
+      "outputLanes" : [ "FieldTypeConverter_03OutputLane15511952308170" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_02",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_motion_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "angularaccelerationx",
+          "field" : "/json_angularAccelerationX"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "angularaccelerationy",
+          "field" : "/json_angularAccelerationY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "angularaccelerationz",
+          "field" : "/json_angularAccelerationZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "angularvelocityx",
+          "field" : "/json_angularVelocityX"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "angularvelocityy",
+          "dataType" : "DOUBLE",
+          "field" : "/json_angularVelocityY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "angularvelocityz",
+          "field" : "/json_angularVelocityZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "frontwheelsangle",
+          "field" : "/json_frontWheelsAngle"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "localvelocityx",
+          "field" : "/json_localVelocityX"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "localvelocityy",
+          "field" : "/json_localVelocityY"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "localvelocityz",
+          "field" : "/json_localVelocityZ"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetversion",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "suspensionaccelerationfronright",
+          "dataType" : "DOUBLE",
+          "field" : "/json_suspensionAcceleration_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionaccelerationfrontleft",
+          "field" : "/json_suspensionAcceleration_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "suspensionaccelerationrearleft",
+          "dataType" : "DOUBLE",
+          "field" : "/json_suspensionAcceleration_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionaccelerationrearright",
+          "field" : "/json_suspensionAcceleration_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionpositionfrontleft",
+          "field" : "/json_suspensionPosition_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionpositionfrontright",
+          "field" : "/json_suspensionPosition_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionpositionrearleft",
+          "field" : "/json_suspensionPosition_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionpositionrearright",
+          "field" : "/json_suspensionPosition_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionvelocityfrontleft",
+          "field" : "/json_suspensionVelocity_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionvelocityfrontright",
+          "field" : "/json_suspensionVelocity_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionvelocityrearleft",
+          "field" : "/json_suspensionVelocity_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "suspensionvelocityrearright",
+          "field" : "/json_suspensionVelocity_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "wheelslipfrontleft",
+          "field" : "/json_wheelSlip_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "wheelslipfrontright",
+          "field" : "/json_wheelSlip_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "wheelsliprearleft",
+          "field" : "/json_wheelSlip_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "wheelsliprearright",
+          "field" : "/json_wheelSlip_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "wheelspeedfrontleft",
+          "field" : "/json_wheelSpeed_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "wheelspeedfrontright",
+          "dataType" : "DOUBLE",
+          "field" : "/json_wheelSpeed_frontRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "wheelspeedrearleft",
+          "dataType" : "DOUBLE",
+          "field" : "/json_wheelSpeed_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "wheelspeedrearright",
+          "dataType" : "DOUBLE",
+          "field" : "/json_wheelSpeed_rearRight"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_motion_v2",
+        "xPos" : 1160,
+        "yPos" : 40,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_03OutputLane15511952308170" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_04",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 300,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_05OutputLane15508052163730" ],
+      "outputLanes" : [ "FieldTypeConverter_04OutputLane15511984955240" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_03",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_lap_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "bestlaptime",
+          "field" : "/json_lapDataList_bestLaptTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "carindex",
+          "field" : "/json_lapDataList_carIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "carposition",
+          "field" : "/json_lapDataList_carPosition"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "currentlapinvalid",
+          "field" : "/json_lapDataList_currentLapInvalid"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "currentlapnumber",
+          "field" : "/json_lapDataList_currentLapNum"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "currentlaptime",
+          "field" : "/json_lapDataList_currentLapTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "driverstatus",
+          "field" : "/json_lapDataList_driverStatus"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "gridposition",
+          "field" : "/json_lapDataList_gridPosition"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "lapdistance",
+          "field" : "/json_lapDataList_lapDistance"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "lastlaptime",
+          "field" : "/json_lapDataList_lastLapTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetversion",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "penalties",
+          "field" : "/json_lapDataList_penalties"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "pitstatus",
+          "field" : "/json_lapDataList_pitStatus"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "playerscar",
+          "field" : "/json_lapDataList_playersCar"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "resultstatus",
+          "field" : "/json_lapDataList_resultStatus"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "safetycardelta",
+          "field" : "/json_lapDataList_safetyCarDelta"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "sector",
+          "field" : "/json_lapDataList_sector"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sector1time",
+          "field" : "/json_lapDataList_sector1Time"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sector2time",
+          "field" : "/json_lapDataList_sector2Time"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "totaldistance",
+          "field" : "/json_lapDataList_totalDistance"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_lap_v2",
+        "xPos" : 1160,
+        "yPos" : 300,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_04OutputLane15511984955240" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_05",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 820,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_03OutputLane15508027910540" ],
+      "outputLanes" : [ "FieldTypeConverter_05OutputLane15512085904370" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_04",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_cartelemetry_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "brake",
+          "field" : "/json_carTelemetryData_brake"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "braketemperaturefrontleft",
+          "field" : "/json_carTelemetryData_brakeTemperature_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "braketemperaturefrontright",
+          "field" : "/json_carTelemetryData_brakeTemperature_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "braketemperaturerearleft",
+          "field" : "/json_carTelemetryData_brakeTemperature_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "braketemperaturerearright",
+          "field" : "/json_carTelemetryData_brakeTemperature_rearRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "circlebpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_circleBPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "clutch",
+          "field" : "/json_carTelemetryData_clutch"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "crossapressed",
+          "field" : "/json_buttonStatus_crossAPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "dpaddownpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_dpadDownPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "dpadleftpressed",
+          "field" : "/json_buttonStatus_dpadLeftPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "dpadrightpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_dpadRightPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "dpaduppressed",
+          "field" : "/json_buttonStatus_dpadUpPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "drs",
+          "field" : "/json_carTelemetryData_drs"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "enginerpm",
+          "field" : "/json_carTelemetryData_engineRpm"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "enginetemperature",
+          "field" : "/json_carTelemetryData_engineTemperature"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "gear",
+          "field" : "/json_carTelemetryData_gear"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "l1lbpressed",
+          "field" : "/json_buttonStatus_l1LBPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "l2ltpressed",
+          "field" : "/json_buttonStatus_l2LTPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "leftstickpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_leftStickPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "optionsmenupressed",
+          "field" : "/json_buttonStatus_optionsMenuPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetformat",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetversion",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "r1rbpressed",
+          "field" : "/json_buttonStatus_r1RBPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "r2rtpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_r2RTPressed"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "revlightspercent",
+          "dataType" : "INTEGER",
+          "field" : "/json_carTelemetryData_revLightsPercent"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "rightstickpressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_rightStickPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "speed",
+          "field" : "/json_carTelemetryData_speed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "squarexpressed",
+          "field" : "/json_buttonStatus_squareXPressed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "steer",
+          "field" : "/json_carTelemetryData_steer"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "throttle",
+          "field" : "/json_carTelemetryData_throttle"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tireinnertemperaturefrontleft",
+          "field" : "/json_carTelemetryData_tireInnerTemperature_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tireinnertemperaturefrontright",
+          "field" : "/json_carTelemetryData_tireInnerTemperature_frontRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tireinnertemperaturerearleft",
+          "dataType" : "INTEGER",
+          "field" : "/json_carTelemetryData_tireInnerTemperature_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tireinnertemperaturerearright",
+          "dataType" : "INTEGER",
+          "field" : "/json_carTelemetryData_tireInnerTemperature_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "tirepressurefrontleft",
+          "field" : "/json_carTelemetryData_tirePressure_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "tirepressurefrontright",
+          "field" : "/json_carTelemetryData_tirePressure_frontRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tirepressurerearleft",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carTelemetryData_tirePressure_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "tirepressurerearright",
+          "field" : "/json_carTelemetryData_tirePressure_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresurfacetemperaturefrontleft",
+          "field" : "/json_carTelemetryData_tireSurfaceTemperature_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresurfacetemperaturefrontright",
+          "field" : "/json_carTelemetryData_tireSurfaceTemperature_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresurfacetemperaturerearleft",
+          "field" : "/json_carTelemetryData_tireSurfaceTemperature_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tiresurfacetemperaturerearright",
+          "dataType" : "INTEGER",
+          "field" : "/json_carTelemetryData_tireSurfaceTemperature_rearRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "triangleypressed",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_buttonStatus_triangleYPressed"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_cartelemetry_v2",
+        "xPos" : 1160,
+        "yPos" : 820,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_05OutputLane15512085904370" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_06",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set Field Types",
+        "xPos" : 940,
+        "yPos" : 950,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_01OutputLane15508009782050" ],
+      "outputLanes" : [ "FieldTypeConverter_06OutputLane15512165774470" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_05",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_carstatus_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "antilockbrakes",
+          "field" : "/json_carStatuses_antiLockBrakes"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "drsallowed",
+          "field" : "/json_carStatuses_drsAllowed"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "enginedamage",
+          "field" : "/json_carStatuses_engineDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "ersdeployedthislap",
+          "field" : "/json_carStatuses_ersDeployedThisLap"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "ersdeploymode",
+          "field" : "/json_carStatuses_ersDeployMode"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "ersharvestedthislapmguh",
+          "field" : "/json_carStatuses_ersHarvestedThisLapMGUH"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "ersharvestedthislapmguk",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carStatuses_ersHarvestedThisLapMGUK"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "ersstoreenergy",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carStatuses_ersStoreEngery"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "exhaustdamage",
+          "field" : "/json_carStatuses_exhaustDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "frontbrakebias",
+          "dataType" : "INTEGER",
+          "field" : "/json_carStatuses_frontBrakeBias"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontleftwheeldamage",
+          "field" : "/json_carStatuses_frontLeftWheelDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontrightwingdamage",
+          "field" : "/json_carStatuses_frontRightWingDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "fuelcapacity",
+          "field" : "/json_carStatuses_fuelCapacity"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "fuelintank",
+          "field" : "/json_carStatuses_fuelInTank"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "fuelmix",
+          "field" : "/json_carStatuses_fuelMix"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "gearboxdamage",
+          "field" : "/json_carStatuses_gearBoxDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "idlerpm",
+          "field" : "/json_carStatuses_idleRpm"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "maxgears",
+          "field" : "/json_carStatuses_maxGears"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "maxrpm",
+          "field" : "/json_carStatuses_maxRpm"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetid",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packettime",
+          "dataType" : "DATETIME",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetversion",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "pitlimiteron",
+          "field" : "/json_carStatuses_pitLimiterOn"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "playercarindex",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "rearwingdamage",
+          "field" : "/json_carStatuses_rearWingDamage"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "sessionuid",
+          "dataType" : "STRING",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tirecompound",
+          "field" : "/json_carStatuses_tireCompound"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tiresdamagefrontleft",
+          "dataType" : "INTEGER",
+          "field" : "/json_carStatuses_tiresDamage_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresdamagefrontright",
+          "field" : "/json_carStatuses_tiresDamage_frontRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresdamagerearleft",
+          "field" : "/json_carStatuses_tiresDamage_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tiresdamagerearright",
+          "field" : "/json_carStatuses_tiresDamage_rearRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tireswearfrontleft",
+          "dataType" : "INTEGER",
+          "field" : "/json_carStatuses_tiresWear_frontLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tireswearfrontright",
+          "field" : "/json_carStatuses_tiresWear_frontRight"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tireswearrearleft",
+          "dataType" : "INTEGER",
+          "field" : "/json_carStatuses_tiresWear_rearLeft"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "tireswearrearright",
+          "dataType" : "INTEGER",
+          "field" : "/json_carStatuses_tiresWear_rearRight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tractioncontrol",
+          "field" : "/json_carStatuses_tractionControl"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "vehiclefiaflags",
+          "field" : "/json_carStatuses_vehicleFiaFlags"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_carstatus_v2",
+        "xPos" : 1160,
+        "yPos" : 950,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_06OutputLane15512165774470" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_07",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 170,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_06OutputLane15508569852520" ],
+      "outputLanes" : [ "FieldTypeConverter_07OutputLane15512851114260" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_06",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_session_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "airtemperature",
+          "field" : "/json_airTemperature"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "era",
+          "field" : "/json_era"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "gamepaused",
+          "field" : "/json_gamePaused"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "marshalzoneszoneflag",
+          "field" : "/json_marshalZones_zoneFlag"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "marshalzoneszonestart",
+          "field" : "/json_marshalZones_zoneStart"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "networkgame",
+          "dataType" : "BOOLEAN",
+          "field" : "/json_networkGame"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "nummarshalzones",
+          "field" : "/json_numMarshalZones"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetformat",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packettime",
+          "dataType" : "DATETIME",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetversion",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "pitspeedlimit",
+          "dataType" : "INTEGER",
+          "field" : "/json_pitSpeedLimit"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "safetycarstatus",
+          "dataType" : "STRING",
+          "field" : "/json_safetyCarStatus"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "sessionduration",
+          "field" : "/json_sessionDuration"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "sessiontimeleft",
+          "field" : "/json_sessionTimeLeft"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessiontype",
+          "field" : "/json_sessionType"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "slipronativesupport",
+          "field" : "/json_sliProNativeSupport"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "spectating",
+          "field" : "/json_spectating"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "spectatorcarindex",
+          "field" : "/json_spectatorCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "totallaps",
+          "field" : "/json_totalLaps"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "trackid",
+          "dataType" : "INTEGER",
+          "field" : "/json_trackId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tracklength",
+          "field" : "/json_trackLength"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "tracktemperature",
+          "field" : "/json_trackTemperature"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "weather",
+          "field" : "/json_weather"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_session_v2",
+        "xPos" : 1160,
+        "yPos" : 170,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_07OutputLane15512851114260" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_08",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 690,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_02OutputLane15508024873570" ],
+      "outputLanes" : [ "FieldTypeConverter_08OutputLane15512988515540" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_07",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_carsetup_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "ballast",
+          "field" : "/json_carSetups_ballast"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "brakebias",
+          "field" : "/json_carSetups_brakeBias"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "brakepressure",
+          "field" : "/json_carSetups_brakePressure"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "frameidentifier",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontantirollbar",
+          "field" : "/json_carSetups_frontAntiRollBar"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "frontcamber",
+          "field" : "/json_carSetups_frontCamber"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontsuspension",
+          "field" : "/json_carSetups_frontSuspension"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontsuspensionheight",
+          "field" : "/json_carSetups_frontSuspensionHeight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "fronttirepressure",
+          "field" : "/json_carSetups_frontTirePressure"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "fronttoe",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carSetups_frontToe"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frontwing",
+          "field" : "/json_carSetups_frontWing"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "fuelload",
+          "field" : "/json_carSetups_fuelLoad"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "offthrottle",
+          "field" : "/json_carSetups_offThrottle"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "onthrottle",
+          "field" : "/json_carSetups_onThrottle"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetversion",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "rearantirollbar",
+          "field" : "/json_carSetups_rearAntiRollBar"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "rearcamber",
+          "dataType" : "DOUBLE",
+          "field" : "/json_carSetups_rearCamber"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "rearsuspension",
+          "dataType" : "INTEGER",
+          "field" : "/json_carSetups_rearSuspension"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "rearsuspensionheight",
+          "field" : "/json_carSetups_rearSuspensionHeight"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "reartirepressure",
+          "field" : "/json_carSetups_rearTirePressure"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "reartoe",
+          "field" : "/json_carSetups_rearToe"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "rearwing",
+          "field" : "/json_carSetups_rearWing"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "sessionuid",
+          "dataType" : "STRING",
+          "field" : "/json_header_sessionUID"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_carsetup_v2",
+        "xPos" : 1160,
+        "yPos" : 690,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_08OutputLane15512988515540" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldPivoter_07",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_listpivot_ListPivotDProcessor",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "listPath",
+        "value" : "/json/participants"
+      }, {
+        "name" : "copyFields",
+        "value" : true
+      }, {
+        "name" : "newPath",
+        "value" : null
+      }, {
+        "name" : "replaceListField",
+        "value" : true
+      }, {
+        "name" : "saveOriginalFieldName",
+        "value" : false
+      }, {
+        "name" : "originalFieldNamePath",
+        "value" : null
+      }, {
+        "name" : "onStagePreConditionFailure",
+        "value" : "CONTINUE"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Pivot participants",
+        "xPos" : 500,
+        "yPos" : 560,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "StreamSelector_01OutputLane1550700407562" ],
+      "outputLanes" : [ "FieldPivoter_07OutputLane15513030609460" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldFlattener_07",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldflattener_FieldFlattenerDProcessor",
+      "stageVersion" : "1",
+      "configuration" : [ {
+        "name" : "config.flattenType",
+        "value" : "ENTIRE_RECORD"
+      }, {
+        "name" : "config.fields",
+        "value" : [ ]
+      }, {
+        "name" : "config.flattenInPlace",
+        "value" : true
+      }, {
+        "name" : "config.flattenTargetField",
+        "value" : null
+      }, {
+        "name" : "config.collisionFieldAction",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "config.removeFlattenedField",
+        "value" : true
+      }, {
+        "name" : "config.nameSeparator",
+        "value" : "_"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Flatten record",
+        "xPos" : 720,
+        "yPos" : 560,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldPivoter_07OutputLane15513030609460" ],
+      "outputLanes" : [ "FieldFlattener_07OutputLane15508570666160" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_09",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 940,
+        "yPos" : 560,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_07OutputLane15508570666160" ],
+      "outputLanes" : [ "FieldTypeConverter_09OutputLane15513022832090" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "FieldTypeConverter_10",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_processor_fieldtypeconverter_FieldTypeConverterDProcessor",
+      "stageVersion" : "2",
+      "configuration" : [ {
+        "name" : "convertBy",
+        "value" : "BY_TYPE"
+      }, {
+        "name" : "fieldTypeConverterConfigs",
+        "value" : [ {
+          "fields" : [ ],
+          "targetType" : "INTEGER",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "wholeTypeConverterConfigs",
+        "value" : [ {
+          "sourceType" : "FLOAT",
+          "targetType" : "DOUBLE",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        }, {
+          "sourceType" : "LONG",
+          "targetType" : "DATETIME",
+          "treatInputFieldAsDate" : false,
+          "dataLocale" : "en,US",
+          "scale" : -1,
+          "decimalScaleRoundingStrategy" : "ROUND_UNNECESSARY",
+          "dateFormat" : "YYYY_MM_DD_HH_MM_SS",
+          "zonedDateTimeFormat" : "ISO_ZONED_DATE_TIME",
+          "encoding" : "UTF-8"
+        } ]
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Set field types",
+        "xPos" : 720,
+        "yPos" : 430,
+        "stageType" : "PROCESSOR"
+      },
+      "inputLanes" : [ "FieldFlattener_04OutputLane15508048948830" ],
+      "outputLanes" : [ "FieldTypeConverter_10OutputLane15513141994410" ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_09",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_event_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "eventcode",
+          "field" : "/json_eventCode"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "packetversion",
+          "dataType" : "INTEGER",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "columnName" : "sessiontime",
+          "dataType" : "DOUBLE",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_event_v2",
+        "xPos" : 940,
+        "yPos" : 430,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_10OutputLane15513141994410" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    }, {
+      "instanceName" : "JDBCProducer_10",
+      "library" : "streamsets-datacollector-jdbc-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_jdbc_JdbcDTarget",
+      "stageVersion" : "6",
+      "configuration" : [ {
+        "name" : "schema",
+        "value" : null
+      }, {
+        "name" : "tableNameTemplate",
+        "value" : "gtc_participant_v2"
+      }, {
+        "name" : "columnNames",
+        "value" : [ {
+          "paramValue" : "?",
+          "dataType" : "BOOLEAN",
+          "columnName" : "aicontrolled",
+          "field" : "/json_participants_aiControlled"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "driverid",
+          "field" : "/json_participants_driverId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "frameidentifier",
+          "field" : "/json_header_frameIdentifier"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "name",
+          "field" : "/json_participants_name"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "nationality",
+          "field" : "/json_participants_nationality"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "numcars",
+          "field" : "/json_numCars"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetformat",
+          "field" : "/json_header_packetFormat"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetid",
+          "field" : "/json_header_packetId"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DATETIME",
+          "columnName" : "packettime",
+          "field" : "/packet_time_ms"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "packetversion",
+          "field" : "/json_header_packetVersion"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "playercarindex",
+          "field" : "/json_header_playerCarIndex"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "racenumber",
+          "field" : "/json_participants_raceNumber"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "DOUBLE",
+          "columnName" : "sessiontime",
+          "field" : "/json_header_sessionTime"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "STRING",
+          "columnName" : "sessionuid",
+          "field" : "/json_header_sessionUID"
+        }, {
+          "paramValue" : "?",
+          "dataType" : "INTEGER",
+          "columnName" : "teamid",
+          "field" : "/json_participants_teamId"
+        } ]
+      }, {
+        "name" : "encloseTableName",
+        "value" : false
+      }, {
+        "name" : "changeLogFormat",
+        "value" : "NONE"
+      }, {
+        "name" : "defaultOperation",
+        "value" : "INSERT"
+      }, {
+        "name" : "unsupportedAction",
+        "value" : "DISCARD"
+      }, {
+        "name" : "useMultiRowInsert",
+        "value" : false
+      }, {
+        "name" : "maxPrepStmtParameters",
+        "value" : -1
+      }, {
+        "name" : "maxPrepStmtCache",
+        "value" : -1
+      }, {
+        "name" : "rollbackOnError",
+        "value" : false
+      }, {
+        "name" : "hikariConfigBean.connectionString",
+        "value" : "jdbc:mapd:localhost:6274:f1_telemetry:binary"
+      }, {
+        "name" : "hikariConfigBean.useCredentials",
+        "value" : true
+      }, {
+        "name" : "hikariConfigBean.username",
+        "value" : "username"
+      }, {
+        "name" : "hikariConfigBean.password",
+        "value" : "password"
+      }, {
+        "name" : "hikariConfigBean.driverProperties",
+        "value" : [ { } ]
+      }, {
+        "name" : "hikariConfigBean.driverClassName",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.connectionTestQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.maximumPoolSize",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.minIdle",
+        "value" : 1
+      }, {
+        "name" : "hikariConfigBean.connectionTimeout",
+        "value" : "${30 * SECONDS}"
+      }, {
+        "name" : "hikariConfigBean.idleTimeout",
+        "value" : "${10 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.maxLifetime",
+        "value" : "${30 * MINUTES}"
+      }, {
+        "name" : "hikariConfigBean.initialQuery",
+        "value" : null
+      }, {
+        "name" : "hikariConfigBean.transactionIsolation",
+        "value" : "DEFAULT"
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      }, {
+        "name" : "stageRequiredFields",
+        "value" : [ ]
+      }, {
+        "name" : "stageRecordPreconditions",
+        "value" : [ ]
+      } ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Load to gtc_participant_v2",
+        "xPos" : 1160,
+        "yPos" : 560,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ "FieldTypeConverter_09OutputLane15513022832090" ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "errorStage" : {
+      "instanceName" : "Discard_ErrorStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Error Records - Discard",
+        "xPos" : 720,
+        "yPos" : 50,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    },
+    "info" : {
+      "pipelineId" : "02LoadF1messagestoOmniSci269b8b03-6dd1-4744-980b-bf7008ff714b",
+      "title" : "02_Load F1 messages to OmniSci",
+      "description" : "",
+      "created" : 1551746845364,
+      "lastModified" : 1551800188670,
+      "creator" : "admin",
+      "lastModifier" : "admin",
+      "lastRev" : "0",
+      "uuid" : "500ebfcb-7863-4784-80e2-e25f4000843a",
+      "valid" : true,
+      "metadata" : {
+        "labels" : [ ]
+      },
+      "name" : "02LoadF1messagestoOmniSci269b8b03-6dd1-4744-980b-bf7008ff714b",
+      "sdcVersion" : "3.7.2",
+      "sdcId" : "66b95001-3ea4-11e9-b248-9b93ba61e8f1"
+    },
+    "metadata" : {
+      "labels" : [ ]
+    },
+    "statsAggregatorStage" : {
+      "instanceName" : "statsAggregatorStageInstance",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_StatsDpmDirectlyDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "stageType" : "TARGET",
+        "label" : "Stats Aggregator -Write to Control Hub directly"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    },
+    "startEventStages" : [ {
+      "instanceName" : "Discard_StartEventStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Start Event - Discard",
+        "xPos" : 280,
+        "yPos" : 50,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "stopEventStages" : [ {
+      "instanceName" : "Discard_StopEventStage",
+      "library" : "streamsets-datacollector-basic-lib",
+      "stageName" : "com_streamsets_pipeline_stage_destination_devnull_ToErrorNullDTarget",
+      "stageVersion" : "1",
+      "configuration" : [ ],
+      "uiInfo" : {
+        "description" : "",
+        "label" : "Stop Event - Discard",
+        "xPos" : 280,
+        "yPos" : 50,
+        "stageType" : "TARGET"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ ],
+      "eventLanes" : [ ],
+      "services" : [ ]
+    } ],
+    "testOriginStage" : {
+      "instanceName" : "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource_TestOriginStage",
+      "library" : "streamsets-datacollector-dev-lib",
+      "stageName" : "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource",
+      "stageVersion" : "3",
+      "configuration" : [ {
+        "name" : "rawData",
+        "value" : "{\n  \"f1\": \"abc\",\n  \"f2\": \"xyz\",\n  \"f3\": \"lmn\"\n}"
+      }, {
+        "name" : "stopAfterFirstBatch",
+        "value" : false
+      }, {
+        "name" : "stageOnRecordError",
+        "value" : "TO_ERROR"
+      } ],
+      "uiInfo" : {
+        "stageType" : "SOURCE",
+        "label" : "Test Origin - Dev Raw Data Source"
+      },
+      "inputLanes" : [ ],
+      "outputLanes" : [ "com_streamsets_pipeline_stage_devtest_rawdata_RawDataDSource_TestOriginStageOutputLane1" ],
+      "eventLanes" : [ ],
+      "services" : [ {
+        "service" : "com.streamsets.pipeline.api.service.dataformats.DataFormatParserService",
+        "serviceVersion" : 1,
+        "configuration" : [ {
+          "name" : "displayFormats",
+          "value" : "DELIMITED,JSON,LOG,SDC_JSON,TEXT,XML"
+        }, {
+          "name" : "dataFormat",
+          "value" : "JSON"
+        }, {
+          "name" : "dataFormatConfig.compression",
+          "value" : "NONE"
+        }, {
+          "name" : "dataFormatConfig.filePatternInArchive",
+          "value" : "*"
+        }, {
+          "name" : "dataFormatConfig.charset",
+          "value" : "UTF-8"
+        }, {
+          "name" : "dataFormatConfig.removeCtrlChars",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.textMaxLineLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.useCustomDelimiter",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.customDelimiter",
+          "value" : "\\r\\n"
+        }, {
+          "name" : "dataFormatConfig.includeCustomDelimiterInTheText",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.jsonContent",
+          "value" : "MULTIPLE_OBJECTS"
+        }, {
+          "name" : "dataFormatConfig.jsonMaxObjectLen",
+          "value" : 4096
+        }, {
+          "name" : "dataFormatConfig.csvFileFormat",
+          "value" : "CSV"
+        }, {
+          "name" : "dataFormatConfig.csvHeader",
+          "value" : "NO_HEADER"
+        }, {
+          "name" : "dataFormatConfig.csvAllowExtraColumns",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvExtraColumnPrefix",
+          "value" : "_extra_"
+        }, {
+          "name" : "dataFormatConfig.csvMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.csvCustomDelimiter",
+          "value" : "|"
+        }, {
+          "name" : "dataFormatConfig.csvCustomEscape",
+          "value" : "\\"
+        }, {
+          "name" : "dataFormatConfig.csvCustomQuote",
+          "value" : "\""
+        }, {
+          "name" : "dataFormatConfig.csvEnableComments",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvCommentMarker",
+          "value" : "#"
+        }, {
+          "name" : "dataFormatConfig.csvIgnoreEmptyLines",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.csvRecordType",
+          "value" : "LIST_MAP"
+        }, {
+          "name" : "dataFormatConfig.csvSkipStartLines",
+          "value" : 0
+        }, {
+          "name" : "dataFormatConfig.parseNull",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.nullConstant",
+          "value" : "\\\\N"
+        }, {
+          "name" : "dataFormatConfig.xmlRecordElement",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.includeFieldXpathAttributes",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.xPathNamespaceContext",
+          "value" : [ ]
+        }, {
+          "name" : "dataFormatConfig.outputFieldAttributes",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.xmlMaxObjectLen",
+          "value" : 4096
+        }, {
+          "name" : "dataFormatConfig.logMode",
+          "value" : "COMMON_LOG_FORMAT"
+        }, {
+          "name" : "dataFormatConfig.logMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.retainOriginalLine",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.customLogFormat",
+          "value" : "%h %l %u %t \"%r\" %>s %b"
+        }, {
+          "name" : "dataFormatConfig.regex",
+          "value" : "^(\\S+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(\\S+) (\\S+) (\\S+)\" (\\d{3}) (\\d+)"
+        }, {
+          "name" : "dataFormatConfig.fieldPathsToGroupName",
+          "value" : [ {
+            "fieldPath" : "/",
+            "group" : 1
+          } ]
+        }, {
+          "name" : "dataFormatConfig.grokPatternDefinition",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.grokPattern",
+          "value" : "%{COMMONAPACHELOG}"
+        }, {
+          "name" : "dataFormatConfig.onParseError",
+          "value" : "ERROR"
+        }, {
+          "name" : "dataFormatConfig.maxStackTraceLines",
+          "value" : 50
+        }, {
+          "name" : "dataFormatConfig.enableLog4jCustomLogFormat",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.log4jCustomLogFormat",
+          "value" : "%r [%t] %-5p %c %x - %m%n"
+        }, {
+          "name" : "dataFormatConfig.avroSchemaSource",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.avroSchema",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.schemaRegistryUrls",
+          "value" : [ ]
+        }, {
+          "name" : "dataFormatConfig.schemaLookupMode",
+          "value" : "SUBJECT"
+        }, {
+          "name" : "dataFormatConfig.subject",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.schemaId",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.protoDescriptorFile",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.messageType",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.isDelimited",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.binaryMaxObjectLen",
+          "value" : 1024
+        }, {
+          "name" : "dataFormatConfig.datagramMode",
+          "value" : "SYSLOG"
+        }, {
+          "name" : "dataFormatConfig.typesDbPath",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.convertTime",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excludeInterval",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.authFilePath",
+          "value" : null
+        }, {
+          "name" : "dataFormatConfig.netflowOutputValuesMode",
+          "value" : "RAW_AND_INTERPRETED"
+        }, {
+          "name" : "dataFormatConfig.maxTemplateCacheSize",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.templateCacheTimeoutMs",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.netflowOutputValuesModeDatagram",
+          "value" : "RAW_AND_INTERPRETED"
+        }, {
+          "name" : "dataFormatConfig.maxTemplateCacheSizeDatagram",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.templateCacheTimeoutMsDatagram",
+          "value" : -1
+        }, {
+          "name" : "dataFormatConfig.wholeFileMaxObjectLen",
+          "value" : 8192
+        }, {
+          "name" : "dataFormatConfig.rateLimit",
+          "value" : "-1"
+        }, {
+          "name" : "dataFormatConfig.verifyChecksum",
+          "value" : false
+        }, {
+          "name" : "dataFormatConfig.excelHeader",
+          "value" : null
+        } ]
+      } ]
+    },
+    "valid" : true,
+    "issues" : {
+      "pipelineIssues" : [ ],
+      "stageIssues" : { },
+      "issueCount" : 0
+    },
+    "previewable" : false
+  },
+  "pipelineRules" : {
+    "schemaVersion" : 3,
+    "version" : 2,
+    "metricsRuleDefinitions" : [ {
+      "id" : "badRecordsAlertID",
+      "alertText" : "High incidence of Error Records",
+      "metricId" : "pipeline.batchErrorRecords.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1550610277338,
+      "valid" : true
+    }, {
+      "id" : "stageErrorAlertID",
+      "alertText" : "High incidence of Stage Errors",
+      "metricId" : "pipeline.batchErrorMessages.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > 100}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1550610277338,
+      "valid" : true
+    }, {
+      "id" : "idleGaugeID",
+      "alertText" : "Pipeline is Idle",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "TIME_OF_LAST_RECEIVED_RECORD",
+      "condition" : "${time:now() - value() > 120000}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1550610277338,
+      "valid" : true
+    }, {
+      "id" : "batchTimeAlertID",
+      "alertText" : "Batch taking more time to process",
+      "metricId" : "RuntimeStatsGauge.gauge",
+      "metricType" : "GAUGE",
+      "metricElement" : "CURRENT_BATCH_AGE",
+      "condition" : "${value() > 200}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1550610277338,
+      "valid" : true
+    }, {
+      "id" : "memoryLimitAlertID",
+      "alertText" : "Memory limit for pipeline exceeded",
+      "metricId" : "pipeline.memoryConsumed.counter",
+      "metricType" : "COUNTER",
+      "metricElement" : "COUNTER_COUNT",
+      "condition" : "${value() > (jvm:maxMemoryMB() * 0.65)}",
+      "sendEmail" : false,
+      "enabled" : false,
+      "timestamp" : 1550610277338,
+      "valid" : true
+    } ],
+    "dataRuleDefinitions" : [ ],
+    "driftRuleDefinitions" : [ ],
+    "uuid" : "807ac163-415c-49ee-a981-d888c7c31c7d",
+    "configuration" : [ {
+      "name" : "emailIDs",
+      "value" : [ ]
+    }, {
+      "name" : "webhookConfigs",
+      "value" : [ ]
+    } ],
+    "ruleIssues" : [ ],
+    "configIssues" : [ ]
+  },
+  "libraryDefinitions" : null
+}
