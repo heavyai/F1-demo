@@ -41,7 +41,7 @@
       "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
     }, {
       "name" : "emailIDs",
-      "value" : [ "randy.zwitch@omnisci.com" ]
+      "value" : [ "you@yourcompany.com" ]
     }, {
       "name" : "constants",
       "value" : [ ]
