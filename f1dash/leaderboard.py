@@ -14,8 +14,19 @@ def get_leaderboard():
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=6274)
 
     #query columns intentionally left vague, can optimize later
-    #possible to use this same df to select reference lap, and have one fewer query?
-    df = pd.read_sql("""select *
+    df = pd.read_sql("""select
+                        sessionuid,
+                        lapnumber,
+                        playercarindex,
+                        lapstarttime,
+                        lapendtime,
+                        laptime,
+                        lapdistance,
+                        era,
+                        weather,
+                        airtemp,
+                        tracklength,
+                        tracktemp
                         from v_leaderboard_melbourne
                         where laptime >= 60
                         order by laptime
@@ -26,11 +37,17 @@ def get_leaderboard():
 
 
 #### create leaderboard
+#### leaderboard_df also used to populate reference lap dropdown
+#### TODO: How do we update this every 30 seconds or so? Doesn't need to be fast, laps avg 90s
+#### TODO: What happens to dropdown if this table does update in the middle, does reference lap change?
+leaderboard_df = get_leaderboard()
 
-leaderboard = get_leaderboard()
-figure = ff.create_table(leaderboard[["sessionuid","lapnumber","lapstarttime", "laptime", "weather"]].head(10),
-                         )
-figure.layout.width = 750
+#formatting for session column to make table width smaller
+leaderboard_df["session"] = [f"""S{x[-4:]}""" for x in leaderboard_df["sessionuid"]]
+
+#create table with top 10 fastest laps
+figure = ff.create_table(leaderboard_df[["session","lapnumber","lapstarttime", "laptime", "weather"]].head(10))
+figure.layout.width = 625
 
 tbl = html.Div([
     dcc.Graph(id='my-table',
@@ -40,9 +57,4 @@ tbl = html.Div([
               })
 ])
 
-leaderboard = dbc.Col([
-                      html.H4("Leaderboard - Melbourne"),
-                      tbl
-                      ],
-                      md=4,
-                      width=6)
+leaderboard = dbc.Col([html.H4("Leaderboard - Melbourne"), tbl], md=4, width=6)

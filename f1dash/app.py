@@ -7,6 +7,7 @@ from track import track
 from leaderboard import leaderboard
 from navbar import navbar
 from telemetry import telemetry
+from controls import menubox
 
 #### intialize app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -15,7 +16,7 @@ app.title = "OmniSci Grand Prix | GTC 2019"
 #### mockup body
 body = dbc.Container([
         dbc.Row([track, leaderboard]),
-        dbc.Row([telemetry])
+        dbc.Row([telemetry, menubox])
     ],
     className="mt-4",
     fluid=True
