@@ -5,13 +5,13 @@ import dash_core_components as dcc
 
 import pymapd
 import pandas as pd
-from credentials import host, user, password, dbname
+from credentials import host, user, password, dbname, port
 
 
 #### helper functions
 def get_leaderboard():
     #placing connection inside to avoid having stale connection
-    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=6274)
+    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
     #query columns intentionally left vague, can optimize later
     df = pd.read_sql("""select
@@ -46,7 +46,9 @@ leaderboard_df = get_leaderboard()
 leaderboard_df["session"] = [f"""S{x[-4:]}""" for x in leaderboard_df["sessionuid"]]
 
 #create table with top 10 fastest laps
-figure = ff.create_table(leaderboard_df[["session","lapnumber","lapstarttime", "laptime", "weather"]].head(10))
+figure = ff.create_table(leaderboard_df[["session","lapnumber","lapstarttime", "laptime", "weather"]].head(10),
+                         height_constant=30
+                         )
 figure.layout.width = 625
 
 tbl = html.Div([
@@ -54,7 +56,8 @@ tbl = html.Div([
               figure=figure,
               config={
                   'displayModeBar': False
-              })
+              }
+              )
 ])
 
 leaderboard = dbc.Col([html.H4("Leaderboard - Melbourne"), tbl], md=4, width=6)

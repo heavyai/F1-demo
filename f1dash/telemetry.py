@@ -6,9 +6,9 @@ import plotly.graph_objs as go
 
 import pymapd
 import pandas as pd
-from credentials import host, user, password, dbname
+from credentials import host, user, password, dbname, port
 
-conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=6274)
+conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
 playercarindex = 0
 sessionuid = 10206713599870479199

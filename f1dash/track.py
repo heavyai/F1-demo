@@ -5,12 +5,12 @@ import dash_bootstrap_components as dbc
 
 import pymapd
 import pandas as pd
-from credentials import host, user, password, dbname
+from credentials import host, user, password, dbname, port
 
 #### helper functions
 def get_lapdata(sessionuid, lapstarttime, lapendtime):
     #placing connection inside to avoid having stale connection
-    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=6274)
+    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
     cm = f"""select
     gforcelateral,

@@ -9,11 +9,10 @@ from navbar import navbar
 from telemetry import telemetry
 from controls import menubox
 
-#### intialize app
+#### intialize app structure
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "OmniSci Grand Prix | GTC 2019"
 
-#### mockup body
 body = dbc.Container([
         dbc.Row([track, leaderboard]),
         dbc.Row([telemetry, menubox])
