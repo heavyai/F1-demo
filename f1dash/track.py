@@ -64,8 +64,9 @@ trace_current = go.Scattergl(x=ref_current_data["worldpositionx"],
 trackgraph = dcc.Graph(
                     figure={
                         "data": [trace_reference, trace_current],
-                        "layout": go.Layout(legend=dict(orientation="h"),
-                                            title='Racing Line: Current vs. Reference Lap'
+                        "layout": go.Layout(legend=dict(orientation="h", y=1),
+                                            title='Racing Line: Current vs. Reference Lap',
+                                            height=410
                                             )
                     },
                     config={

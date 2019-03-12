@@ -63,7 +63,7 @@ telemetry_trace_rt = go.Scatter(x=telemetry_rt_lim["normalized_frame"],
 telgraph = dcc.Graph(
                     figure={
                         "data": [telemetry_trace_reference, telemetry_trace_rt],
-                        "layout": go.Layout(legend=dict(orientation="h"),
+                        "layout": go.Layout(legend=dict(orientation="h",y=1.2),
                                             title='Telemetry'
                                             )
                     },
