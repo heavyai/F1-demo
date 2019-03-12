@@ -3,11 +3,12 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import plotly.figure_factory as ff
 
 import pymapd
 import pandas as pd
 from credentials import host, user, password, dbname, port
-import plotly.figure_factory as ff
+
 
 # import individual components from files
 from track import track
@@ -17,9 +18,7 @@ from telemetry import telemetry
 from controls import menubox
 
 #### intialize app structure
-#### layout needs to be defined so that callbacks will work
-#### TODO: how do stop blinking that happens on first load when leaderboard not defined
-#### Because of using Graph(), shows axis before settling on table display
+#### layout needs to be defined first so that callbacks will work
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app.title = "OmniSci Grand Prix | GTC 2019"
 
@@ -58,16 +57,18 @@ def create_leaderboard(notused):
                         limit 10
                     """, conn)
 
-    #formatting for session column to make table width smaller
+    #formatting for session column to make table display width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
 
     #create table with top 10 fastest laps
+    #### TODO: evaluate replacing this with native dash table
+    #### due to blinking that happens on first load because of using Graph()
+    #### shows axis before settling on displaying table
     figure = ff.create_table(df[["session","lapnumber","lapstarttime", "laptime", "weather"]],
                              height_constant=30)
 
     figure.layout.width = 625
 
-    print("Leaderboard runs every 10 seconds") ## remove this
     return figure
 
 
