@@ -9,13 +9,13 @@ import pymapd
 import pandas as pd
 from credentials import host, user, password, dbname, port
 
-
 # import individual components from files
 from track import track
 from leaderboard import leaderboard
 from navbar import navbar
 from telemetry import telemetry
 from controls import menubox
+
 
 #### intialize app structure
 #### layout needs to be defined first so that callbacks will work without complaining
@@ -33,9 +33,8 @@ body = dbc.Container([
 app.layout = html.Div([navbar, body])
 
 
-
 #### reactive leaderboard component
-@app.callback(Output('leaderboard-tbl', 'figure'),
+@app.callback([Output('leaderboard-tbl', 'columns'), Output('leaderboard-tbl', 'data')],
               [Input('leaderboard-interval', 'n_intervals')])
 def create_leaderboard(notused):
 
@@ -59,17 +58,14 @@ def create_leaderboard(notused):
 
     #formatting for session column to make table display width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
+    df["rank"] = [x+1 for x in df.index]
 
-    #create table with top 10 fastest laps
-    #### TODO: evaluate replacing this with native dash table
-    #### due to blinking that happens on first load because of using Graph()
-    #### shows axis before settling on displaying table
-    figure = ff.create_table(df[["session","lapnumber","lapstarttime", "laptime", "weather"]],
-                             height_constant=25)
+    #Limit columns in df,
+    df_ = df[["rank", "session","lapnumber","lapstarttime", "laptime", "weather"]]
+    columns=[{"name": i, "id": i} for i in df_.columns]
 
-    figure.layout.width = 625
-
-    return figure
+    print("Leaderboard fired")
+    return columns, df_.to_dict("rows")
 
 #### populate/update reference lap dropdown dynamically
 #### https://community.plot.ly/t/want-to-update-dropdown-options-but-not-selected-value/20820/2?u=randyzwitch
@@ -108,6 +104,7 @@ def make_reflap_options(n, value, values):
         else:
             value = None
 
+    print("Dropdown fired")
     return options, value
 
 #### run app
