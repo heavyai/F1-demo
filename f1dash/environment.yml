@@ -10,17 +10,11 @@ dependencies:
   - bleach=3.1.0=py_0
   - boost-cpp=1.68.0=h11c811c_1000
   - bzip2=1.0.6=h14c3975_1002
-  - ca-certificates=2019.3.9=hecc5488_0
-  - certifi=2019.3.9=py37_0
   - cffi=1.12.2=py37h9745a5d_0
   - chardet=3.0.4=py37_1003
   - click=7.0=py_0
   - cryptography=2.5=py37hb7f436b_1
-  - dash=0.37.0=py_0
-  - dash-core-components=0.43.1=py_0
-  - dash-html-components=0.13.5=py_0
   - dash-renderer=0.18.0=py_0
-  - dash-table=3.4.0=py_0
   - decorator=4.3.2=py_0
   - defusedxml=0.5.0=py_1
   - entrypoints=0.3=py37_1000
@@ -51,7 +45,6 @@ dependencies:
   - nbformat=4.4.0=py_1
   - ncurses=6.1=hf484d3e_1002
   - notebook=5.7.5=py37_0
-  - openssl=1.0.2r=h14c3975_0
   - pandas=0.24.1=py37hf484d3e_0
   - pandoc=2.6=1
   - pandocfilters=1.4.2=py_1
@@ -99,11 +92,18 @@ dependencies:
   - zeromq=4.2.5=hf484d3e_1006
   - zlib=1.2.11=h14c3975_1004
   - blas=1.0=mkl
+  - ca-certificates=2019.1.23=0
+  - certifi=2019.3.9=py37_0
   - intel-openmp=2019.1=144
   - mkl=2019.1=144
   - numpy=1.16.2=py37h7e9f1db_0
   - numpy-base=1.16.2=py37hde5b4d6_0
+  - openssl=1.0.2r=h7b6447c_0
   - pip:
+    - dash==0.39.0
     - dash-bootstrap-components==0.3.4
+    - dash-core-components==0.44.0
+    - dash-html-components==0.14.0
+    - dash-table==3.6.0
 prefix: /home/rzwitch/miniconda3/envs/f1dash
 
