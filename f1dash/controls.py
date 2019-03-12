@@ -6,10 +6,8 @@ import pymapd
 import pandas as pd
 from credentials import host, user, password, dbname, port
 
-#from leaderboard import leaderboard_df
-
 #### helper functions
-def get_leaderboard():
+def get_sessions():
     #placing connection inside to avoid having stale connection
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
@@ -17,16 +15,8 @@ def get_leaderboard():
     df = pd.read_sql("""select
                         sessionuid,
                         lapnumber,
-                        playercarindex,
-                        lapstarttime,
-                        lapendtime,
                         laptime,
-                        lapdistance,
-                        era,
-                        weather,
-                        airtemp,
-                        tracklength,
-                        tracktemp
+                        playercarindex
                         from v_leaderboard_melbourne
                         where laptime >= 60
                         order by laptime
@@ -35,21 +25,19 @@ def get_leaderboard():
 
     return df
 
-
-
-#### create leaderboard
-#### leaderboard_df also used to populate reference lap dropdown
-#### TODO: What happens to dropdown if this table does update in the middle, does reference lap change?
-leaderboard_df = get_leaderboard()
+### create leaderboard
+### leaderboard_df also used to populate reference lap dropdown
+### TODO: What happens to dropdown if this table does update in the middle, does reference lap change?
+leaderboard_df = get_sessions()
 
 #formatting for session column to make table width smaller
 leaderboard_df["session"] = [f"""S{x[-4:]}""" for x in leaderboard_df["sessionuid"]]
 
 #### reference lap: build list dynamically from leaderboard_df defined in leaderboard.py
 reflapmenu = dcc.Dropdown(
-    options=[{'label': f"""{uid} - Lap {lnum} - {lapt}""", 'value': uid} for uid, lnum, lapt in
-                zip(leaderboard_df["session"], leaderboard_df["lapnumber"], leaderboard_df["laptime"])
-            ],
+    id='reflapmenu',
+    options = [{'label': f"""{uid} - Lap {lnum} - {lapt}""", 'value': uid} for uid, lnum, lapt in
+                zip(leaderboard_df["session"], leaderboard_df["lapnumber"], leaderboard_df["laptime"])],
     value=leaderboard_df["session"][0],
     searchable=False,
     clearable=False,
@@ -58,6 +46,7 @@ reflapmenu = dcc.Dropdown(
 
 #### telemetry metrics: these are the reasonable values from the table
 metricmenu = dcc.Dropdown(
+    id='metricmenu',
     options=[
         {'label': 'speed', 'value': 'speed'},
         {'label': 'enginerpm', 'value': 'enginerpm'},
