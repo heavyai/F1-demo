@@ -66,7 +66,9 @@ trackgraph = dcc.Graph(
                         "data": [trace_reference, trace_current],
                         "layout": go.Layout(legend=dict(orientation="h", y=1),
                                             title='Racing Line: Current vs. Reference Lap',
-                                            height=410
+                                            height=410,
+                                            xaxis=dict(title='worldpositionx'),
+                                            yaxis=dict(title='worldpositionz')
                                             )
                     },
                     config={

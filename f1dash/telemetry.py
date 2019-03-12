@@ -64,7 +64,9 @@ telgraph = dcc.Graph(
                     figure={
                         "data": [telemetry_trace_reference, telemetry_trace_rt],
                         "layout": go.Layout(legend=dict(orientation="h",y=1.2),
-                                            title='Telemetry'
+                                            title='Vehicle Telemetry',
+                                            xaxis=dict(title='Normalized Lap Time'),
+                                            yaxis=dict(title='Value')
                                             )
                     },
                     config={
