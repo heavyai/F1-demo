@@ -19,8 +19,9 @@ from controls import menubox
 
 #### intialize app structure
 #### layout needs to be defined first so that callbacks will work without complaining
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 app.title = "OmniSci Grand Prix | GTC 2019"
+#app.config['suppress_callback_exceptions']=True
 
 body = dbc.Container([
         dbc.Row([track, leaderboard]),
@@ -109,7 +110,7 @@ def make_reflap_options(notused, value, values):
             value = None
 
     print("Dropdown updated from database")
-    print(options[0])
+
     return options, value
 
 #### run app
