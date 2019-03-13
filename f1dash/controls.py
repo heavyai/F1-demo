@@ -11,7 +11,7 @@ reflapmenu = dcc.Dropdown(
     id='reflapmenu',
     searchable=False,
     clearable=False,
-    style=dict(width = '275px')
+    style=dict(minWidth = '250px', paddingRight = '15px')
 )
 
 #### telemetry metrics: these are the reasonable values from the table
@@ -28,7 +28,7 @@ metricmenu = dcc.Dropdown(
     value="speed",
     searchable=False,
     clearable=False,
-    style=dict(width = '275px')
+    style=dict(minWidth = '250px', paddingRight = '15px')
 )
 
 #### this builds the stacked controls div
