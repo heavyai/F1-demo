@@ -34,4 +34,4 @@ tbldiv = html.Div([
         )
 ])
 
-leaderboard = dbc.Col([html.H4("Leaderboard - Melbourne"), tbldiv], md=4, width=6)
+leaderboard = dbc.Col([html.H4("Leaderboard - Melbourne"), tbldiv], md=6, width=6)

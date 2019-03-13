@@ -8,9 +8,7 @@ logo = html.Div([
 ])
 
 navbar = dbc.NavbarSimple(
-    children=[logo,
-        #dbc.NavItem(dbc.NavLink("GitHub Repo", href="https://github.com/omnisci/vehicle-telematics-analytics-demo")),
-    ],
+    children=[logo],
     brand="OmniSci Grand Prix - NVIDIA GTC 2019",
     sticky="top",
     fluid=True
