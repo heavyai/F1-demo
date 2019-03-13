@@ -32,6 +32,6 @@ tbldiv = html.Div([
             interval=10*1000, # in milliseconds
             n_intervals=0
         )
-])
+], style={'paddingRight': '15px'})
 
 leaderboard = dbc.Col([html.H4("Leaderboard - Melbourne"), tbldiv], md=6, width=6)

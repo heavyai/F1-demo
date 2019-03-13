@@ -4,7 +4,9 @@ import dash_html_components as html
 #### navbar
 
 logo = html.Div([
-    html.Img(src='/assets/omnisci_secondary_horizontalbox.svg', style={'width': '60%'})
+    html.Img(src='/assets/omnisci_secondary_horizontalbox.svg',
+             style={'width': '60%', 'float': 'right'},
+             className="logo-img")
 ])
 
 navbar = dbc.NavbarSimple(
