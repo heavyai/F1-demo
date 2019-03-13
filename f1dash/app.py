@@ -42,7 +42,7 @@ def create_leaderboard(notused):
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
     #where clause of >= 60 just to ensure a full lap, even though view definition
-    #tries to calculate full lap. could also add a date clause if want to limit
+    #tries to calculate full lap. could also add a packettime clause if want to limit
     #leaderboard to drivers at current event
     df = pd.read_sql("""select
                         sessionuid,
@@ -64,18 +64,17 @@ def create_leaderboard(notused):
     df_ = df[["rank", "session","lapnumber","lapstarttime", "laptime", "weather"]]
     columns=[{"name": i, "id": i} for i in df_.columns]
 
-    print("Leaderboard fired")
+    print("Leaderboard updated from database")
     return columns, df_.to_dict("rows")
 
 #### populate/update reference lap dropdown dynamically
 #### https://community.plot.ly/t/want-to-update-dropdown-options-but-not-selected-value/20820/2?u=randyzwitch
-#### TODO: need to create better value for the 'value' key in options to pass on when used as a control
 @app.callback(
     [Output("reflapmenu", "options"), Output("reflapmenu", "value")],
     [Input('leaderboard-interval', "n_intervals")],
     [State("reflapmenu", "value"), State("metricmenu", "value")]
 )
-def make_reflap_options(n, value, values):
+def make_reflap_options(notused, value, values):
 
     #placing connection inside to avoid having stale connection
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
@@ -84,6 +83,8 @@ def make_reflap_options(n, value, values):
                         sessionuid,
                         lapnumber,
                         laptime,
+                        lapstarttime,
+                        lapendtime,
                         playercarindex
                         from v_leaderboard_melbourne
                         where laptime >= 60
@@ -94,8 +95,11 @@ def make_reflap_options(n, value, values):
     #formatting for session column to make table width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
 
-    options = [{'label': f"""{uid} - Lap {lnum} - {lapt}""", 'value': uid} for uid, lnum, lapt in
-                zip(df["session"], df["lapnumber"], df["laptime"])]
+    options = [{'label': f"""{uid} - Lap {lnum} - {lapt}""",
+                'value': f"""{sessionuid}, {lstart}, {lend}, {pci}"""}
+                for uid, sessionuid, lnum, lapt, lstart, lend, pci
+                in zip(df["session"], df["sessionuid"], df["lapnumber"], df["laptime"], df["lapstarttime"], df["lapendtime"], df["playercarindex"])
+              ]
 
     if value not in [o["value"] for o in options]:
         # if the value is not in the new options list, we choose a different value
@@ -104,7 +108,8 @@ def make_reflap_options(n, value, values):
         else:
             value = None
 
-    print("Dropdown fired")
+    print("Dropdown updated from database")
+    print(options[0])
     return options, value
 
 #### run app

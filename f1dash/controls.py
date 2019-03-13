@@ -32,7 +32,6 @@ metricmenu = dcc.Dropdown(
 )
 
 #### this builds the stacked controls div
-#### TODO: understand if this is stable or whether to use rows
 menubox = dbc.Col([html.H5("Reference Lap"),
                    reflapmenu,
                    html.H5("Metric", style={'padding-top': 50}),
