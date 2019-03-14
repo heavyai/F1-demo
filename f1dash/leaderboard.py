@@ -29,7 +29,7 @@ tbldiv = html.Div([
     #controls when create_leaderboard() and make_reflap_options runs
     dcc.Interval(
             id='leaderboard-interval',
-            interval=10*1000, # in milliseconds
+            interval=15*1000, # in milliseconds
             n_intervals=0
         )
 ], style={'paddingRight': '15px'})
