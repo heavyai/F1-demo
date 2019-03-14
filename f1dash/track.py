@@ -39,10 +39,10 @@ def get_lapdata(sessionuid, lapstarttime, lapendtime):
 
 
 #TODO: make reference lap chooseable from interface
-ref_lap_data = get_lapdata(10206713599870479199, "2018-12-20 00:58:36", "2018-12-20 01:00:18")
+ref_lap_data = get_lapdata(1270608935058109592, "2019-03-08 23:11:06", "2019-03-08 23:12:34")
 
 #TODO: get most recent lap programmatically
-ref_current_data = get_lapdata(1804599106752478952, "2018-12-19 20:40:27", "2018-12-19 20:48:58")
+ref_current_data = get_lapdata(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06")
 
 #graph properties changed here
 trace_reference = go.Scattergl(x=ref_lap_data["worldpositionx"],
