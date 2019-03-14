@@ -13,7 +13,7 @@ from credentials import host, user, password, dbname, port
 from track import track, get_lapdata
 from leaderboard import leaderboard
 from navbar import navbar
-from telemetry import telemetry
+from telemetry import telemetry, get_telemetry_data
 from controls import menubox
 
 
@@ -144,7 +144,7 @@ def build_track_chart(notused, reflapvalue):
 
     figure={
         "data": [trace_reference, trace_current],
-        "layout": go.Layout(legend=dict(orientation="h", y=1),
+        "layout": go.Layout(legend=dict(orientation="h", y=1.2),
                             title='Racing Line: Current vs. Reference Lap',
                             height=410,
                             xaxis=dict(title='worldpositionx'),
@@ -154,6 +154,48 @@ def build_track_chart(notused, reflapvalue):
     }
 
     print("build_track_chart fired: " + reflapvalue)
+
+    return figure
+
+#### telemetry
+@app.callback(Output('telemetry-graph', 'figure'),
+              [Input('leaderboard-interval', 'n_intervals'), Input('reflapmenu', 'value'), Input('metricmenu', 'value')])
+def build_telemetry_chart(notused, reflapvalue, metric):
+
+    #unpack reflapvalue into parameters to use for reference lap
+    sessionuid, lapstarttime, lapendtime, playercarindex = reflapvalue.split(',')
+    telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex)
+    telemetry_ref_lim = telemetry_ref.iloc[::480]
+
+
+    #### TODO: get current lap values here
+    telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19)
+    telemetry_rt_lim = telemetry_rt.iloc[::480]
+
+    # iloc statements a crude downsample of data coming at 60hz to improve visual clarity
+    # alternatives could be a boxplot, smoothing of some sort
+    telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,
+                                           y=telemetry_ref_lim["speed"],
+                                           name="Reference Lap",
+                                           marker = dict(size = 2, color = "#404040")
+                                )
+
+    telemetry_trace_rt = go.Scatter(x=telemetry_rt_lim.index,
+                                    y=telemetry_rt_lim["speed"],
+                                    name="Current Lap",
+                                    marker = dict(size = 4, color = "#1A84C7")
+                                )
+    figure={
+        "data": [telemetry_trace_reference, telemetry_trace_rt],
+        "layout": go.Layout(legend=dict(orientation="h",y=1.2),
+                            title='Vehicle Telemetry',
+                            xaxis=dict(title='Normalized Lap Time'),
+                            yaxis=dict(title=metric),
+                            uirevision='never'
+                            )
+    }
+
+    print("build_telemetry_chart fired: " + metric)
 
     return figure
 

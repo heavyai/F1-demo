@@ -33,41 +33,8 @@ def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex):
 
     return telemetry_ref
 
-#### TODO: make this get values from dropdown
-telemetry_ref = get_telemetry_data(1270608935058109592, "2019-03-08 23:11:06", "2019-03-08 23:12:34", 19)
-telemetry_ref_lim = telemetry_ref.iloc[::480]
-#telemetry_ref_lim["normalized_frame"] = (telemetry_ref_lim["frameidentifier"] - telemetry_ref_lim["frameidentifier"].min())/(telemetry_ref_lim["frameidentifier"].max() - telemetry_ref_lim["frameidentifier"].min())
 
-
-#### TODO: get current lap values here
-telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19)
-telemetry_rt_lim = telemetry_rt.iloc[::480]
-#telemetry_rt_lim["normalized_frame"] = (telemetry_rt_lim["frameidentifier"] - telemetry_rt_lim["frameidentifier"].min())/(telemetry_rt_lim["frameidentifier"].max() - telemetry_rt_lim["frameidentifier"].min())
-
-# iloc statements a crude downsample of data coming at 60hz to improve visual clarity
-# alternatives could be a boxplot, smoothing of some sort
-telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,
-                                       y=telemetry_ref_lim["speed"],
-                                       name="Reference Lap",
-                                       marker = dict(size = 2, color = "#404040")
-                            )
-
-telemetry_trace_rt = go.Scatter(x=telemetry_rt_lim.index,
-                                y=telemetry_rt_lim["speed"],
-                                name="Current Lap",
-                                marker = dict(size = 4, color = "#1A84C7")
-                            )
-
-
-telgraph = dcc.Graph(
-                    figure={
-                        "data": [telemetry_trace_reference, telemetry_trace_rt],
-                        "layout": go.Layout(legend=dict(orientation="h",y=1.2),
-                                            title='Vehicle Telemetry',
-                                            xaxis=dict(title='Normalized Lap Time'),
-                                            yaxis=dict(title='Value')
-                                            )
-                    },
+telgraph = dcc.Graph(id='telemetry-graph',
                     config={
                         'displayModeBar': True
                     }
