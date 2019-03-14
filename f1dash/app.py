@@ -65,7 +65,7 @@ def create_leaderboard(notused):
     df_ = df[["rank", "session","lapnumber","lapstarttime", "laptime", "weather"]]
     columns=[{"name": i, "id": i} for i in df_.columns]
 
-    print("Leaderboard updated from database")
+    #print("Leaderboard updated from database")
     return columns, df_.to_dict("rows")
 
 #### populate/update reference lap dropdown dynamically
@@ -109,7 +109,7 @@ def make_reflap_options(notused, value, values):
         else:
             value = None
 
-    print("Dropdown updated from database")
+    #print("Dropdown updated from database")
 
     return options, value
 
@@ -153,7 +153,7 @@ def build_track_chart(notused, reflapvalue):
                             )
     }
 
-    print("build_track_chart fired: " + reflapvalue)
+    #print("build_track_chart fired: " + reflapvalue)
 
     return figure
 
@@ -195,7 +195,7 @@ def build_telemetry_chart(notused, reflapvalue, metric):
                             )
     }
 
-    print("build_telemetry_chart fired: " + metric)
+    #print("build_telemetry_chart fired: " + metric)
 
     return figure
 
