@@ -114,9 +114,8 @@ def make_reflap_options(notused, value, values):
     return options, value
 
 #### Update track
-#### TODO: currently tied to leaderboard-interval update, consider second timer for more frequent updates
 @app.callback(Output('track-graph', 'figure'),
-              [Input('leaderboard-interval', 'n_intervals'), Input('reflapmenu', 'value')])
+              [Input('track-interval', 'n_intervals'), Input('reflapmenu', 'value')])
 def build_track_chart(notused, reflapvalue):
 
     #unpack reflapvalue into parameters to use for reference lap
@@ -159,10 +158,12 @@ def build_track_chart(notused, reflapvalue):
 
 #### telemetry
 @app.callback(Output('telemetry-graph', 'figure'),
-              [Input('leaderboard-interval', 'n_intervals'), Input('reflapmenu', 'value'), Input('metricmenu', 'value')])
+              [Input('track-interval', 'n_intervals'), Input('reflapmenu', 'value'), Input('metricmenu', 'value')])
 def build_telemetry_chart(notused, reflapvalue, metric):
 
     #unpack reflapvalue into parameters to use for reference lap
+    #iloc statements a crude downsample of data coming at 60hz to improve visual clarity
+    #alternatives could be a boxplot, smoothing of some sort
     sessionuid, lapstarttime, lapendtime, playercarindex = reflapvalue.split(',')
     telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex)
     telemetry_ref_lim = telemetry_ref.iloc[::480]
@@ -172,8 +173,6 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19)
     telemetry_rt_lim = telemetry_rt.iloc[::480]
 
-    # iloc statements a crude downsample of data coming at 60hz to improve visual clarity
-    # alternatives could be a boxplot, smoothing of some sort
     telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,
                                            y=telemetry_ref_lim["speed"],
                                            name="Reference Lap",

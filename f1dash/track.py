@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
+import dash_html_components as html
 
 import pymapd
 import pandas as pd
@@ -34,11 +35,19 @@ def get_lapdata(sessionuid, lapstarttime, lapendtime):
     return carmotion
 
 #display in dash
-trackgraph = dcc.Graph(id='track-graph',
-                       config={
-                            'displayModeBar': True
-                       }
-                      )
+trackgraph = html.Div([
+                        dcc.Graph(id='track-graph',
+                            config={
+                                'displayModeBar': True
+                            }
+                        ),
+                        #controls when track and telemetry updates
+                        dcc.Interval(
+                                id='track-interval',
+                                interval=5*1000, # in milliseconds
+                                n_intervals=0
+                            )
+                      ])
 
 #controls bootstrap positioning
 track = dbc.Col([trackgraph], width=6)
