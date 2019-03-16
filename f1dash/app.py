@@ -119,6 +119,8 @@ def make_reflap_options(notused, value, values):
 def build_track_chart(notused, reflapvalue):
 
     #unpack reflapvalue into parameters to use for reference lap
+    #set backup value just in case callback hasn't fired yet
+    reflapvalue = reflapvalue or "1270608935058109592,2019-03-08 23:09:37,2019-03-08 23:11:06,19"
     sessionuid, lapstarttime, lapendtime, _ = reflapvalue.split(',')
     ref_lap_data = get_lapdata(sessionuid, lapstarttime, lapendtime)
 
@@ -164,6 +166,8 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     #unpack reflapvalue into parameters to use for reference lap
     #iloc statements a crude downsample of data coming at 60hz to improve visual clarity
     #alternatives could be a boxplot, smoothing of some sort
+    #set backup value just in case callback hasn't fired yet
+    reflapvalue = reflapvalue or "1270608935058109592,2019-03-08 23:09:37,2019-03-08 23:11:06,19"
     sessionuid, lapstarttime, lapendtime, playercarindex = reflapvalue.split(',')
     telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex)
     telemetry_ref_lim = telemetry_ref.iloc[::480]
