@@ -44,7 +44,7 @@ trackgraph = html.Div([
                         #controls when track and telemetry updates
                         dcc.Interval(
                                 id='track-interval',
-                                interval=5*1000, # in milliseconds
+                                interval=7*1000, # in milliseconds
                                 n_intervals=0
                             )
                       ])
