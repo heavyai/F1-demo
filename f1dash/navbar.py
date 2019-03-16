@@ -11,6 +11,5 @@ logo = html.Div([
 navbar = dbc.NavbarSimple(
     children=[logo],
     brand="OmniSci Grand Prix - NVIDIA GTC 2019",
-    # sticky="top",
     fluid=True
 )

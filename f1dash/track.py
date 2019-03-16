@@ -11,14 +11,13 @@ from credentials import host, user, password, dbname, port
 def get_lapdata(sessionuid, lapstarttime, lapendtime):
 
     #placing connection inside to avoid having stale connection
-    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
+    conn = pymapd.connect(host = host, user = user, password = password, dbname = dbname, port = port)
 
     cm = f"""select
     gforcelateral,
     gforcelongitudinal,
     gforcevertical,
     worldpositionx,
-    worldpositiony,
     worldpositionz,
     worldvelocityx,
     worldvelocityy,

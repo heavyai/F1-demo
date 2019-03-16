@@ -18,10 +18,9 @@ from controls import menubox
 
 
 #### intialize app structure
-#### layout needs to be defined first so that callbacks will work without complaining
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app = dash.Dash(__name__, external_stylesheets = [dbc.themes.FLATLY])
 app.title = "OmniSci Grand Prix | GTC 2019"
-#app.config['suppress_callback_exceptions']=True
+app.config['suppress_callback_exceptions'] = True
 
 body = dbc.Container([
         dbc.Row([track, leaderboard]),
@@ -52,7 +51,7 @@ def create_leaderboard(notused):
                         laptime,
                         weather
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-02 00:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-03-15 00:00:00'
                         order by laptime
                         limit 10
                     """, conn)
@@ -65,7 +64,6 @@ def create_leaderboard(notused):
     df_ = df[["rank", "session","lapnumber","lapstarttime", "laptime", "weather"]]
     columns=[{"name": i, "id": i} for i in df_.columns]
 
-    #print("Leaderboard updated from database")
     return columns, df_.to_dict("rows")
 
 #### populate/update reference lap dropdown dynamically
@@ -88,7 +86,7 @@ def make_reflap_options(notused, value, values):
                         lapendtime,
                         playercarindex
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-02 00:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-03-15 00:00:00'
                         order by laptime
                         limit 50
                     """, conn)
@@ -108,8 +106,6 @@ def make_reflap_options(notused, value, values):
             value = options[0]["value"]
         else:
             value = None
-
-    #print("Dropdown updated from database")
 
     return options, value
 
@@ -154,8 +150,6 @@ def build_track_chart(notused, reflapvalue):
                             )
     }
 
-    #print("build_track_chart fired: " + reflapvalue)
-
     return figure
 
 #### telemetry
@@ -197,8 +191,6 @@ def build_telemetry_chart(notused, reflapvalue, metric):
                             uirevision='never'
                             )
     }
-
-    #print("build_telemetry_chart fired: " + metric)
 
     return figure
 

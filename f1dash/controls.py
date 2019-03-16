@@ -37,4 +37,5 @@ menubox = dbc.Col([html.H5("Reference Lap"),
                    html.H5("Metric", style={'padding-top': 50}),
                    metricmenu
                    ],
-                   width=3)
+                   width=3
+                 )
