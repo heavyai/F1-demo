@@ -6,22 +6,17 @@ import pymapd
 import pandas as pd
 from credentials import host, user, password, dbname, port
 
-def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex):
+def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, metric):
 
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
     ## get telemetry data
     ## by specifying the timestamps and sessionuid, it implies a single track
     tele = f"""select
-    brake,
-    enginerpm,
-    frameidentifier,
-    gear,
     packettime,
     sessiontime,
-    speed,
-    steer,
-    throttle
+    frameidentifier,
+    {metric}
     from gtc_cartelemetry_v2
     where sessionuid = '{sessionuid}' and
     packettime between '{lapstarttime}' and '{lapendtime}' and

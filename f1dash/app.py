@@ -163,22 +163,22 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     #set backup value just in case callback hasn't fired yet
     reflapvalue = reflapvalue or "1270608935058109592,2019-03-08 23:09:37,2019-03-08 23:11:06,19"
     sessionuid, lapstarttime, lapendtime, playercarindex = reflapvalue.split(',')
-    telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex)
+    telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, metric)
     telemetry_ref_lim = telemetry_ref.iloc[::480]
 
 
     #### TODO: get current lap values here
-    telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19)
+    telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19, metric)
     telemetry_rt_lim = telemetry_rt.iloc[::480]
 
     telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,
-                                           y=telemetry_ref_lim["speed"],
+                                           y=telemetry_ref_lim[metric],
                                            name="Reference Lap",
                                            marker = dict(size = 2, color = "#404040")
                                 )
 
     telemetry_trace_rt = go.Scatter(x=telemetry_rt_lim.index,
-                                    y=telemetry_rt_lim["speed"],
+                                    y=telemetry_rt_lim[metric],
                                     name="Current Lap",
                                     marker = dict(size = 4, color = "#1A84C7")
                                 )
