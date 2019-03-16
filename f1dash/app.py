@@ -185,7 +185,7 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     figure={
         "data": [telemetry_trace_reference, telemetry_trace_rt],
         "layout": go.Layout(legend=dict(orientation="h",y=1.2),
-                            title='Vehicle Telemetry',
+                            title='Vehicle Telemetry: ' + metric,
                             xaxis=dict(title='Normalized Lap Time'),
                             yaxis=dict(title=metric),
                             uirevision='never'
