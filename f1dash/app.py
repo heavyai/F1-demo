@@ -10,7 +10,7 @@ import pandas as pd
 from credentials import host, user, password, dbname, port
 
 # import individual components from files
-from track import track, get_lapdata
+from track import track, get_lapdata, get_current_lap
 from leaderboard import leaderboard
 from navbar import navbar
 from telemetry import telemetry, get_telemetry_data
@@ -120,8 +120,9 @@ def build_track_chart(notused, reflapvalue):
     sessionuid, lapstarttime, lapendtime, _ = reflapvalue.split(',')
     ref_lap_data = get_lapdata(sessionuid, lapstarttime, lapendtime)
 
-    #TODO: get most recent lap programmatically
-    ref_current_data = get_lapdata(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06")
+    #get most recent lap programmatically
+    cl = get_current_lap()
+    ref_current_data = get_lapdata(cl["sessionuid"].iloc[0], cl["lapstarttime"].iloc[0], cl["lapendtime"].iloc[0])
 
     #graph properties changed here
     trace_reference = go.Scattergl(x=ref_lap_data["worldpositionx"],
@@ -166,9 +167,9 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, metric)
     telemetry_ref_lim = telemetry_ref.iloc[::480]
 
-
-    #### TODO: get current lap values here
-    telemetry_rt = get_telemetry_data(1270608935058109592, "2019-03-08 23:09:37", "2019-03-08 23:11:06", 19, metric)
+    #### get current lap values
+    cl = get_current_lap()
+    telemetry_rt = get_telemetry_data(cl["sessionuid"].iloc[0], cl["lapstarttime"].iloc[0], cl["lapendtime"].iloc[0], playercarindex, metric)
     telemetry_rt_lim = telemetry_rt.iloc[::480]
 
     telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,

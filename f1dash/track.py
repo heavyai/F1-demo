@@ -33,6 +33,18 @@ def get_lapdata(sessionuid, lapstarttime, lapendtime):
 
     return carmotion
 
+#gets current lap loaded into database, used to populate track and telemetry
+def get_current_lap():
+
+    #placing connection inside to avoid having stale connection
+    conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
+    data = pd.read_sql("select * from v_most_recent_lap_melbourne", conn)
+
+    data["lapstarttime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapstarttime"]]
+    data["lapstarttime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapendtime"]]
+
+    return data
+
 #display in dash
 trackgraph = html.Div([
                         dcc.Graph(id='track-graph',
