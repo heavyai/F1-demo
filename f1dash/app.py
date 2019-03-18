@@ -80,7 +80,7 @@ def make_reflap_options(notused, value, values):
     #placing connection inside to avoid having stale connection
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
 
-    df = pd.read_sql("""select
+    df = pd.read_sql("""select distinct
                         sessionuid,
                         lapnumber,
                         laptime,
