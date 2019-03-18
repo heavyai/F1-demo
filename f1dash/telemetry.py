@@ -14,14 +14,13 @@ def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, met
     ## by specifying the timestamps and sessionuid, it implies a single track
     tele = f"""select
     packettime,
-    sessiontime,
-    frameidentifier,
-    {metric}
+    max({metric}) as {metric}
     from gtc_cartelemetry_v2
     where sessionuid = '{sessionuid}' and
     packettime between '{lapstarttime}' and '{lapendtime}' and
     playercarindex = {playercarindex}
-    order by frameidentifier
+    group by 1
+    order by 1
     """
 
     telemetry_ref = pd.read_sql(tele, conn)
