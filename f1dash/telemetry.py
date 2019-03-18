@@ -14,7 +14,7 @@ def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, met
     ## by specifying the timestamps and sessionuid, it implies a single track
     tele = f"""select
     packettime,
-    avg({metric}) as {metric}
+    max({metric}) as {metric}
     from gtc_cartelemetry_v2
     where sessionuid = '{sessionuid}' and
     packettime between '{lapstarttime}' and '{lapendtime}' and
