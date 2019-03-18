@@ -21,6 +21,7 @@ from controls import menubox
 app = dash.Dash(__name__, external_stylesheets = [dbc.themes.FLATLY])
 app.title = "OmniSci Grand Prix | GTC 2019"
 app.config['suppress_callback_exceptions'] = True
+server = app.server
 
 body = dbc.Container([
         dbc.Row([track, leaderboard]),
@@ -198,4 +199,4 @@ def build_telemetry_chart(notused, reflapvalue, metric):
 #### run app
 #### TODO: disable debug when finished
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host='0.0.0.0')
