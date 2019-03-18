@@ -166,21 +166,19 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     reflapvalue = reflapvalue or "1270608935058109592,2019-03-08 23:09:37,2019-03-08 23:11:06,19"
     sessionuid, lapstarttime, lapendtime, playercarindex = reflapvalue.split(',')
     telemetry_ref = get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, metric)
-    telemetry_ref_lim = telemetry_ref.iloc[::480]
 
     #### get current lap values
     cl = get_current_lap()
     telemetry_rt = get_telemetry_data(cl["sessionuid"].iloc[0], cl["lapstarttime"].iloc[0], cl["lapendtime"].iloc[0], playercarindex, metric)
-    telemetry_rt_lim = telemetry_rt.iloc[::480]
 
-    telemetry_trace_reference = go.Scatter(x=telemetry_ref_lim.index,
-                                           y=telemetry_ref_lim[metric],
+    telemetry_trace_reference = go.Scatter(x=telemetry_ref.index,
+                                           y=telemetry_ref[metric],
                                            name="Reference Lap",
                                            marker = dict(size = 2, color = "#404040")
                                 )
 
-    telemetry_trace_rt = go.Scatter(x=telemetry_rt_lim.index,
-                                    y=telemetry_rt_lim[metric],
+    telemetry_trace_rt = go.Scatter(x=telemetry_rt.index,
+                                    y=telemetry_rt[metric],
                                     name="Current Lap",
                                     marker = dict(size = 4, color = "#1A84C7")
                                 )
@@ -188,7 +186,7 @@ def build_telemetry_chart(notused, reflapvalue, metric):
         "data": [telemetry_trace_reference, telemetry_trace_rt],
         "layout": go.Layout(legend=dict(orientation="h",y=1.2),
                             title='Vehicle Telemetry: ' + metric,
-                            xaxis=dict(title='Normalized Lap Time'),
+                            xaxis=dict(title='Seconds Into Lap'),
                             yaxis=dict(title=metric),
                             uirevision='never'
                             )
