@@ -41,7 +41,7 @@ def get_current_lap():
     data = pd.read_sql("select * from v_most_recent_lap_melbourne", conn)
 
     data["lapstarttime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapstarttime"]]
-    data["lapstarttime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapendtime"]]
+    data["lapendtime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapendtime"]]
 
     return data
 
