@@ -5,7 +5,7 @@
     "pipelineId" : "02LoadF1messagestoOmniSci269b8b03-6dd1-4744-980b-bf7008ff714b",
     "title" : "02_Load F1 messages to OmniSci",
     "description" : "",
-    "uuid" : "901d996f-567d-4296-8f95-c4db36803ccd",
+    "uuid" : "50d6d221-0840-447f-97b6-f6fdb45d2752",
     "configuration" : [ {
       "name" : "executionMode",
       "value" : "STANDALONE"
@@ -41,7 +41,7 @@
       "value" : [ "RUN_ERROR", "STOPPED", "FINISHED" ]
     }, {
       "name" : "emailIDs",
-      "value" : [ "your.email@you.com" ]
+      "value" : [ "you@youremail.com" ]
     }, {
       "name" : "constants",
       "value" : [ ]
@@ -437,7 +437,7 @@
         "value" : "DEFAULT"
       }, {
         "name" : "stageOnRecordError",
-        "value" : "TO_ERROR"
+        "value" : "DISCARD"
       } ],
       "uiInfo" : {
         "yPos" : 50,
@@ -2479,10 +2479,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -2491,7 +2491,7 @@
         "value" : "DEFAULT"
       }, {
         "name" : "stageOnRecordError",
-        "value" : "TO_ERROR"
+        "value" : "DISCARD"
       }, {
         "name" : "stageRequiredFields",
         "value" : [ ]
@@ -2770,10 +2770,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -3011,10 +3011,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -3247,10 +3247,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -3393,10 +3393,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -3569,10 +3569,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -3810,10 +3810,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -4156,10 +4156,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -4457,10 +4457,10 @@
         "value" : "${30 * SECONDS}"
       }, {
         "name" : "hikariConfigBean.idleTimeout",
-        "value" : "${10 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.maxLifetime",
-        "value" : "${30 * MINUTES}"
+        "value" : "${10080 * MINUTES}"
       }, {
         "name" : "hikariConfigBean.initialQuery",
         "value" : null
@@ -4512,11 +4512,11 @@
       "title" : "02_Load F1 messages to OmniSci",
       "description" : "",
       "created" : 1551746845364,
-      "lastModified" : 1552755866115,
+      "lastModified" : 1552918820371,
       "creator" : "admin",
       "lastModifier" : "admin",
       "lastRev" : "0",
-      "uuid" : "901d996f-567d-4296-8f95-c4db36803ccd",
+      "uuid" : "50d6d221-0840-447f-97b6-f6fdb45d2752",
       "valid" : true,
       "metadata" : {
         "labels" : [ ]
@@ -4819,9 +4819,9 @@
     },
     "valid" : true,
     "issues" : {
-      "issueCount" : 0,
+      "pipelineIssues" : [ ],
       "stageIssues" : { },
-      "pipelineIssues" : [ ]
+      "issueCount" : 0
     },
     "previewable" : false
   },
