@@ -52,7 +52,7 @@ def create_leaderboard(notused):
                         laptime,
                         sample(weather) as weather
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-17 00:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-03-18 15:00:00'
                         group by 1,2,3,4
                         order by laptime
                         limit 10
@@ -88,7 +88,7 @@ def make_reflap_options(notused, value, values):
                         lapendtime,
                         playercarindex
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-17 00:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-03-18 15:00:00'
                         order by laptime
                         limit 50
                     """, conn)
