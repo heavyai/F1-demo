@@ -18,8 +18,8 @@ from controls import menubox
 
 
 #### intialize app structure
-app = dash.Dash(__name__, external_stylesheets = [dbc.themes.FLATLY])
-app.title = "OmniSci Grand Prix | GTC 2019"
+app = dash.Dash(__name__, external_stylesheets = [dbc.themes.DARKLY])
+app.title = "OmniSci Grand Prix | Converge 2019"
 app.config['suppress_callback_exceptions'] = True
 server = app.server
 
@@ -52,7 +52,7 @@ def create_leaderboard(notused):
                         laptime,
                         sample(weather) as weather
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-18 15:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
                         group by 1,2,3,4
                         order by laptime
                         limit 10
@@ -88,7 +88,7 @@ def make_reflap_options(notused, value, values):
                         lapendtime,
                         playercarindex
                         from v_leaderboard_melbourne
-                        where laptime >= 60 and lapstarttime >= '2019-03-18 15:00:00'
+                        where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
                         order by laptime
                         limit 50
                     """, conn)
@@ -130,7 +130,7 @@ def build_track_chart(notused, reflapvalue):
     trace_reference = go.Scattergl(x=ref_lap_data["worldpositionx"],
                                    y=ref_lap_data["worldpositionz"],
                                    mode="markers",
-                                   marker = dict(size = 2, color = "#404040"),
+                                   marker = dict(size = 2, color = "#f36c21"),
                                    name="Reference Lap"
                                   )
 
@@ -138,18 +138,21 @@ def build_track_chart(notused, reflapvalue):
     trace_current = go.Scattergl(x=ref_current_data["worldpositionx"],
                                y=ref_current_data["worldpositionz"],
                                mode="markers",
-                               marker = dict(size = 4, color = "#1A84C7"),
+                               marker = dict(size = 4, color = "#1c4798"),
                                name="Current Lap"
                                )
 
     figure={
         "data": [trace_reference, trace_current],
-        "layout": go.Layout(legend=dict(orientation="h", y=1.2),
+        "layout": go.Layout(legend=dict(orientation="h", y=1.2, font = dict(color="#FFFFFF")),
                             title='Racing Line: Current vs. Reference Lap',
                             height=410,
-                            xaxis=dict(title='worldpositionx'),
-                            yaxis=dict(title='worldpositionz'),
-                            uirevision='never'
+                            xaxis=dict(title='worldpositionx', color='#FFFFFF'),
+                            yaxis=dict(title='worldpositionz', color='#FFFFFF'),
+                            uirevision='never',
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)',
+                            titlefont=dict(color="#FFFFFF")
                             )
     }
 
@@ -175,21 +178,24 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     telemetry_trace_reference = go.Scatter(x=telemetry_ref.index,
                                            y=telemetry_ref[metric],
                                            name="Reference Lap",
-                                           marker = dict(size = 2, color = "#404040")
+                                           marker = dict(size = 2, color = "#f36c21")
                                 )
 
     telemetry_trace_rt = go.Scatter(x=telemetry_rt.index,
                                     y=telemetry_rt[metric],
                                     name="Current Lap",
-                                    marker = dict(size = 4, color = "#1A84C7")
+                                    marker = dict(size = 4, color = "#1c4798")
                                 )
     figure={
         "data": [telemetry_trace_reference, telemetry_trace_rt],
         "layout": go.Layout(legend=dict(orientation="h",y=1.2),
                             title='Vehicle Telemetry: ' + metric,
-                            xaxis=dict(title='Seconds Into Lap'),
-                            yaxis=dict(title=metric),
-                            uirevision='never'
+                            xaxis=dict(title='Seconds Into Lap', color='#FFFFFF'),
+                            yaxis=dict(title=metric, color='#FFFFFF'),
+                            uirevision='never',
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)',
+                            titlefont=dict(color="#FFFFFF")
                             )
     }
 

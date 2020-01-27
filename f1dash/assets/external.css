@@ -1,0 +1,20 @@
+._dash-undo-redo {
+	display: none;
+}
+
+.modebar {
+  background-color: #444;  /*overrides CSS for chart menu*/
+}
+
+.Select div, .Select input {
+	background-color: #222;
+	color: #FFFFFF;
+}
+
+#react-select-2--value-item, #react-select-3--value-item {
+	color: #FFFFFF;
+}
+
+.navbar {
+		border-bottom:1px solid #1c4798;
+}
