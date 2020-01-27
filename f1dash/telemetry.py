@@ -24,6 +24,7 @@ def get_telemetry_data(sessionuid, lapstarttime, lapendtime, playercarindex, met
     """
 
     telemetry_ref = pd.read_sql(tele, conn)
+    #telemetry_ref = conn.select_ipc(tele)
 
     return telemetry_ref
 

@@ -18,7 +18,7 @@ from controls import menubox
 
 
 #### intialize app structure
-app = dash.Dash(__name__, external_stylesheets = [dbc.themes.FLATLY])
+app = dash.Dash(__name__, external_stylesheets = [dbc.themes.DARKLY])
 app.title = "OmniSci Grand Prix | Converge 2019"
 app.config['suppress_callback_exceptions'] = True
 server = app.server
@@ -58,6 +58,18 @@ def create_leaderboard(notused):
                         limit 10
                     """, conn)
 
+    #df = conn.select_ipc("""select
+    #                        sessionuid,
+    #                    lapnumber,
+    #                    lapstarttime,
+    #                    laptime,
+    #                    sample(weather) as weather
+    #                    from v_leaderboard_melbourne
+    #                    where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
+    #                    group by 1,2,3,4
+    #                    order by laptime
+    #                    limit 10""")
+
     #formatting for session column to make table display width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
     df["rank"] = [x+1 for x in df.index]
@@ -92,6 +104,20 @@ def make_reflap_options(notused, value, values):
                         order by laptime
                         limit 50
                     """, conn)
+
+    #df = conn.select_ipc("""select distinct
+    #                    sessionuid,
+    #                    lapnumber,
+    #                    laptime,
+    #                    lapstarttime,
+    #                    lapendtime,
+    #                    playercarindex
+    #                    from v_leaderboard_melbourne
+    #                    where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
+    #                    order by laptime
+    #                    limit 50
+    #                """)
+
 
     #formatting for session column to make table width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
@@ -130,7 +156,7 @@ def build_track_chart(notused, reflapvalue):
     trace_reference = go.Scattergl(x=ref_lap_data["worldpositionx"],
                                    y=ref_lap_data["worldpositionz"],
                                    mode="markers",
-                                   marker = dict(size = 2, color = "#404040"),
+                                   marker = dict(size = 2, color = "#FFA500"),
                                    name="Reference Lap"
                                   )
 
@@ -149,7 +175,10 @@ def build_track_chart(notused, reflapvalue):
                             height=410,
                             xaxis=dict(title='worldpositionx'),
                             yaxis=dict(title='worldpositionz'),
-                            uirevision='never'
+                            uirevision='never',
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)',
+                            titlefont=dict(color="#FFA500")
                             )
     }
 
@@ -175,7 +204,7 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     telemetry_trace_reference = go.Scatter(x=telemetry_ref.index,
                                            y=telemetry_ref[metric],
                                            name="Reference Lap",
-                                           marker = dict(size = 2, color = "#404040")
+                                           marker = dict(size = 2, color = "#FFA500")
                                 )
 
     telemetry_trace_rt = go.Scatter(x=telemetry_rt.index,
@@ -189,7 +218,10 @@ def build_telemetry_chart(notused, reflapvalue, metric):
                             title='Vehicle Telemetry: ' + metric,
                             xaxis=dict(title='Seconds Into Lap'),
                             yaxis=dict(title=metric),
-                            uirevision='never'
+                            uirevision='never',
+                            paper_bgcolor='rgba(0,0,0,0)',
+                            plot_bgcolor='rgba(0,0,0,0)',
+                            titlefont=dict(color="#FFA500")
                             )
     }
 

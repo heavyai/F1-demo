@@ -8,12 +8,12 @@ import dash_table
 tbldiv = html.Div([
     dash_table.DataTable(
         id='leaderboard-tbl',
-        style_cell_conditional=[
-            {
-                'if': {'row_index': 'odd'},
-                'backgroundColor': 'rgb(248, 248, 248)'
-            }
-        ],
+        #style_cell_conditional=[
+        #    {
+        #        'if': {'row_index': 'odd'},
+        #        'backgroundColor': 'rgb(248, 248, 248)'
+        #    }
+        #],
         style_header={
             'backgroundColor': '#1A84C7',
             'color': 'white',
@@ -23,7 +23,9 @@ tbldiv = html.Div([
             'height': '330'
         },
         style_cell={
-            'fontFamily': '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
+            'fontFamily': '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
+            'backgroundColor': 'rgb(50,50,50)',
+            'color': 'white'
         }
     ),
     #controls when create_leaderboard() and make_reflap_options runs
