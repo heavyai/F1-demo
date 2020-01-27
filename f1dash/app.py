@@ -58,18 +58,6 @@ def create_leaderboard(notused):
                         limit 10
                     """, conn)
 
-    #df = conn.select_ipc("""select
-    #                        sessionuid,
-    #                    lapnumber,
-    #                    lapstarttime,
-    #                    laptime,
-    #                    sample(weather) as weather
-    #                    from v_leaderboard_melbourne
-    #                    where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
-    #                    group by 1,2,3,4
-    #                    order by laptime
-    #                    limit 10""")
-
     #formatting for session column to make table display width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]
     df["rank"] = [x+1 for x in df.index]
@@ -104,20 +92,6 @@ def make_reflap_options(notused, value, values):
                         order by laptime
                         limit 50
                     """, conn)
-
-    #df = conn.select_ipc("""select distinct
-    #                    sessionuid,
-    #                    lapnumber,
-    #                    laptime,
-    #                    lapstarttime,
-    #                    lapendtime,
-    #                    playercarindex
-    #                    from v_leaderboard_melbourne
-    #                    where laptime >= 60 and lapstarttime >= '2019-05-04 21:00:00'
-    #                    order by laptime
-    #                    limit 50
-    #                """)
-
 
     #formatting for session column to make table width smaller
     df["session"] = [f"""S{x[-4:]}""" for x in df["sessionuid"]]

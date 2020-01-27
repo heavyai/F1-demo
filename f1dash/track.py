@@ -30,7 +30,6 @@ def get_lapdata(sessionuid, lapstarttime, lapendtime):
     """
 
     carmotion = pd.read_sql(cm, conn)
-    #carmotion = conn.select_ipc(cm)
 
     return carmotion
 
@@ -40,7 +39,6 @@ def get_current_lap():
     #placing connection inside to avoid having stale connection
     conn = pymapd.connect(host = host, user= user, password= password, dbname= dbname, port=port)
     data = pd.read_sql("select * from v_most_recent_lap_melbourne", conn)
-    #data = conn.select_ipc("select * from v_most_recent_lap_melbourne")
 
     data["lapstarttime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapstarttime"]]
     data["lapendtime"] = [x.strftime("%Y-%m-%d %H:%M:%S") for x in data["lapendtime"]]
