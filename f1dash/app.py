@@ -144,15 +144,15 @@ def build_track_chart(notused, reflapvalue):
 
     figure={
         "data": [trace_reference, trace_current],
-        "layout": go.Layout(legend=dict(orientation="h", y=1.2),
+        "layout": go.Layout(legend=dict(orientation="h", y=1.2, font = dict(color="#FFFFFF")),
                             title='Racing Line: Current vs. Reference Lap',
                             height=410,
-                            xaxis=dict(title='worldpositionx'),
-                            yaxis=dict(title='worldpositionz'),
+                            xaxis=dict(title='worldpositionx', color='#FFFFFF'),
+                            yaxis=dict(title='worldpositionz', color='#FFFFFF'),
                             uirevision='never',
                             paper_bgcolor='rgba(0,0,0,0)',
                             plot_bgcolor='rgba(0,0,0,0)',
-                            titlefont=dict(color="#FFA500")
+                            titlefont=dict(color="#FFFFFF")
                             )
     }
 
@@ -190,12 +190,12 @@ def build_telemetry_chart(notused, reflapvalue, metric):
         "data": [telemetry_trace_reference, telemetry_trace_rt],
         "layout": go.Layout(legend=dict(orientation="h",y=1.2),
                             title='Vehicle Telemetry: ' + metric,
-                            xaxis=dict(title='Seconds Into Lap'),
-                            yaxis=dict(title=metric),
+                            xaxis=dict(title='Seconds Into Lap', color='#FFFFFF'),
+                            yaxis=dict(title=metric, color='#FFFFFF'),
                             uirevision='never',
                             paper_bgcolor='rgba(0,0,0,0)',
                             plot_bgcolor='rgba(0,0,0,0)',
-                            titlefont=dict(color="#FFA500")
+                            titlefont=dict(color="#FFFFFF")
                             )
     }
 
