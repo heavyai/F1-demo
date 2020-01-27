@@ -130,7 +130,7 @@ def build_track_chart(notused, reflapvalue):
     trace_reference = go.Scattergl(x=ref_lap_data["worldpositionx"],
                                    y=ref_lap_data["worldpositionz"],
                                    mode="markers",
-                                   marker = dict(size = 2, color = "#FFA500"),
+                                   marker = dict(size = 2, color = "#f36c21"),
                                    name="Reference Lap"
                                   )
 
@@ -138,7 +138,7 @@ def build_track_chart(notused, reflapvalue):
     trace_current = go.Scattergl(x=ref_current_data["worldpositionx"],
                                y=ref_current_data["worldpositionz"],
                                mode="markers",
-                               marker = dict(size = 4, color = "#1A84C7"),
+                               marker = dict(size = 4, color = "#1c4798"),
                                name="Current Lap"
                                )
 
@@ -178,13 +178,13 @@ def build_telemetry_chart(notused, reflapvalue, metric):
     telemetry_trace_reference = go.Scatter(x=telemetry_ref.index,
                                            y=telemetry_ref[metric],
                                            name="Reference Lap",
-                                           marker = dict(size = 2, color = "#FFA500")
+                                           marker = dict(size = 2, color = "#f36c21")
                                 )
 
     telemetry_trace_rt = go.Scatter(x=telemetry_rt.index,
                                     y=telemetry_rt[metric],
                                     name="Current Lap",
-                                    marker = dict(size = 4, color = "#1A84C7")
+                                    marker = dict(size = 4, color = "#1c4798")
                                 )
     figure={
         "data": [telemetry_trace_reference, telemetry_trace_rt],

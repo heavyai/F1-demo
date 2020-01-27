@@ -8,14 +8,8 @@ import dash_table
 tbldiv = html.Div([
     dash_table.DataTable(
         id='leaderboard-tbl',
-        #style_cell_conditional=[
-        #    {
-        #        'if': {'row_index': 'odd'},
-        #        'backgroundColor': 'rgb(248, 248, 248)'
-        #    }
-        #],
         style_header={
-            'backgroundColor': '#1A84C7',
+            'backgroundColor': '#1c4798',
             'color': 'white',
             'fontFamily': '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
         },
@@ -24,7 +18,7 @@ tbldiv = html.Div([
         },
         style_cell={
             'fontFamily': '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
-            'backgroundColor': 'rgb(50,50,50)',
+            'backgroundColor': '#222',
             'color': 'white'
         }
     ),
