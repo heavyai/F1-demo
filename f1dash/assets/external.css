@@ -6,12 +6,8 @@
   background-color: #444;  /*overrides CSS for chart menu*/
 }
 
-.Select div, .Select input {
+.Select div, .Select input, .Select.has-value.Select--single > .Select-control .Select-value .Select-value-label, .Select.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label{
 	background-color: #222;
-	color: #FFFFFF;
-}
-
-#react-select-2--value-item, #react-select-3--value-item {
 	color: #FFFFFF;
 }
 

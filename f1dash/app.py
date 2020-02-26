@@ -33,6 +33,27 @@ body = dbc.Container([
 
 app.layout = html.Div([navbar, body])
 
+# helps load css at the footer, to avoid having default react css overwrite
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+            {%css%}
+        </footer>
+    </body>
+</html>
+'''
+
 
 #### reactive leaderboard component
 @app.callback([Output('leaderboard-tbl', 'columns'), Output('leaderboard-tbl', 'data')],
@@ -188,7 +209,7 @@ def build_telemetry_chart(notused, reflapvalue, metric):
                                 )
     figure={
         "data": [telemetry_trace_reference, telemetry_trace_rt],
-        "layout": go.Layout(legend=dict(orientation="h",y=1.2),
+        "layout": go.Layout(legend=dict(orientation="h",y=1.2, font = dict(color="#FFFFFF")),
                             title='Vehicle Telemetry: ' + metric,
                             xaxis=dict(title='Seconds Into Lap', color='#FFFFFF'),
                             yaxis=dict(title=metric, color='#FFFFFF'),
