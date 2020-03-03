@@ -1,4 +1,4 @@
-# vehicle-telematics-analytics-demo
+# F1 demo
 Real-time vehicle telematics analytics demo using OmniSci, debuted at [NVIDIA GTC 2019](https://www.nvidia.com/en-us/gtc/) San Jose and later at [OmniSci Converge 2019](https://converge.omnisci.com/).
 
 ![Dash app](/f1dash/assets/dash-screenshot.png)
