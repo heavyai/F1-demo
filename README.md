@@ -13,6 +13,14 @@ This demo is built using only open-source components:
 
 This repo is set up as a monorepo; see the [data engineering](https://github.com/omnisci/vehicle-telematics-analytics-demo/tree/master/dataengineering) and [f1dash](https://github.com/omnisci/vehicle-telematics-analytics-demo/tree/master/f1dash) folders for the README's for StreamSets and Python/Dash code, respectively.
 
+## Blog Posts
+
+The following blog posts were published to the [OmniSci Blog](https://www.omnisci.com/blog) to give an in-depth explanation of how everything works:
+
+[Creating the OmniSci F1 Demo: Real-Time Data Ingestion With StreamSets](https://www.omnisci.com/blog/creating-the-omnisci-f1-demo)
+
+[Plotly Dash and OmniSciDB for Real-Time Data Visualization](https://www.omnisci.com/blog/plotly-dash-and-omniscidb-for-real-time-data-visualization)
+
 ## Data
 
 We want to see what YOU would build with this dataset!
